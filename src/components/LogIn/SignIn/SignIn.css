@@ -1,0 +1,72 @@
+.signIn{
+    height: 605px;
+    width: 500px;
+    margin-top: 20px;
+}
+
+.loginPassword{
+    margin-top: 10px;
+    height: 45px;
+    width: 350px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: large;
+}
+
+.loginPassword:focus{
+    outline-color: rgb(78, 78, 255);
+}
+
+.SignInBtn{
+    margin-top: 10px;
+    height: 40px;
+    width: 357px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: orangered;
+    cursor: pointer;
+}
+
+.SignInBtn:hover{
+    background-color: rgb(255, 95, 37);
+}
+
+.SignUpBtn{
+    margin-top: 10px;
+    height: 40px;
+    width: 357px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: orangered;
+    cursor: pointer;
+}
+
+.SignUpBtn:hover{
+    background-color: rgb(255, 95, 37);
+}
+
+.socialMediaIcons{
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+}
+
+.sociialMediaBtns{
+    background-color: white;
+    border: none;
+    width: 350px;
+    display: flex;
+    height: 40px;
+    cursor: pointer;
+    color: blue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.sociialMediaBtns:hover{
+    background-color: rgb(238, 236, 236);
+}
+
+.errorMessage{
+    font-size: small;
+    color: red;
+}
