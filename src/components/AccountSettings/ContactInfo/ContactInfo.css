@@ -1,0 +1,128 @@
+.ContactInfo{
+    position: absolute;
+    margin-top: -330px;
+    margin-left: 400px;
+    width: 65%;
+}
+
+.changeEmailBtn{
+    height: 50px;
+    width: 110px;
+    border: 1px solid rgb(78, 78, 78);
+    border-radius: 5px;
+    cursor: pointer;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.changeEmailBtn:hover{
+    background-color: rgb(223, 223, 223);
+}   
+
+.emailChangeInp{
+    height: 40px;
+    width: 550px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.emailChangeInp:focus{
+    outline-color: blue;
+}
+
+
+.passwordInpForEmailChange{
+    height: 40px;
+    width: 550px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.passwordInpForEmailChange:focus{
+    outline-color: blue;
+}
+
+.emailChangesSaveBtn{
+    height: 40px;
+    width: 90px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(255, 68, 0);
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.emailChangesSaveBtn:hover{
+    background-color: rgb(255, 93, 34);
+}
+
+.profilePicture{
+    height: 200px;
+    width: 200px;
+    border: 2px dashed rgb(104, 104, 104);
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+
+.profilePicture:hover{
+    border-color: blue;
+    cursor: pointer;
+}
+
+.profilePictureFrame{
+    height: 220px;
+    width: 220px;
+    border: 1px solid gray;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.pirctureUrlInp{
+    height: 50px;
+    width: 350px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.pirctureUrlInp:focus{
+    outline-color: blue;
+}
+
+.contactInformationInps{
+    height: 40px;
+    width: 300px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.addressInps{
+    height: 40px;
+    width: 550px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.workAddressInps{
+    height: 40px;
+    width: 550px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.newAccInfoSaveBtn{
+    height: 40px;
+    width: 90px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(255, 68, 0);
+    margin-top: 30px;
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+
+.newAccInfoSaveBtn:hover{
+    background-color: rgb(255, 93, 34);
+}
+
