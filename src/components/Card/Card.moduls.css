@@ -1,0 +1,119 @@
+
+  .card {
+    position: relative;
+    width: 250px;
+    height: 230px;
+    background: no-repeat top;
+    background-size: cover;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+    display: grid;
+    grid-template-rows: 50% 50%;
+    margin-right: 40px;
+  }
+  
+  
+  .card:hover {
+    transform: scale(01);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+  }
+  
+  .event-info {
+    position: relative;
+    display: grid;
+    grid-template-areas: 
+    "empty title title"
+    "info onfo action";
+    justify-items: center;
+    align-items: center;
+    grid-gap: 7px;
+    padding: 16px;
+  }
+  
+  .event-info * {
+    position: relative;
+  }
+  
+  .title {
+    grid-area: title;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .additional-info {
+    grid-area: info;
+  }
+  
+  .additional-info p {
+    font-size: 9px;
+    margin-top: 3px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  
+  }
+  
+  .price {
+    position: absolute;
+    top: 0;
+    left: 25px;
+    width: 45px;
+    height: 45px;
+    background-color: #fff;
+    color: #dd5e89;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+  }
+  
+  .price:hover {
+    transform: scale(01);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+  }
+  
+  .event-info::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 110%;
+    height: 300%;
+    background: linear-gradient(to bottom, #ff80ea 0%, #ffe44e 51%, #dd5e89 100%);
+    transform: rotate(-3deg);
+    border-top-right-radius: 40px;
+  }
+  
+  .action {
+    border: 1px solid;
+    outline: none;
+    background-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 6px;
+    transition: background-color 0.3s, color 0.3s;
+    grid-area: action;
+  }
+  
+  .action:hover{
+    background-color: #fff;
+    color: #dd5e89;
+  }
+
+.cartImage {
+  cursor: pointer;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+
+}
