@@ -1,0 +1,181 @@
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+form {
+    max-width: 530px;
+    margin: 0 auto;
+}
+form h1{
+    font-size: 35px;
+}
+/* info styles */
+.info{
+    max-width: 510px;
+}
+.info label{
+    position: relative;
+    left: 7px;
+    top: 30px;
+    font-size: 13px;
+}
+.info input {
+    padding: 20px 5px 6px 5px;
+    margin-top: 10px;
+    width: 100%;
+    outline-color:blue;
+}
+.info select{
+    overflow-y: scroll;
+    padding: 17px 0 17px 5px;
+    margin: 35px 0 10px 0;
+    width: 33%;
+    overflow: scroll;
+    outline-color:blue;
+}
+.info select option{
+    padding: 10px;
+}
+.GrTextAlignLeft{
+    color: #DBDAE3FF;
+    position: relative; 
+    left: -99px;
+    font-size: 65px;
+    top: 108px;
+}
+.textarea{
+    margin-top: 20px;
+    
+}
+.textarea textarea{
+    padding: 5px;
+    width: 513px;
+    height: 103px;
+    resize: none;
+    font-size: 12px;
+    outline-color:blue;
+}
+.textarea p{
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+.hr{
+    border-top: 1px dotted grey;
+    margin-top: 57px;
+}
+
+/* location styles */
+.location{
+    max-width: 510px;
+}
+.location p{
+    margin-bottom: 50px;
+}
+.location button{
+    padding: 16px 25px;
+    background-color: white;
+    margin-right: 20px;
+    border:1px solid grey;
+    margin-bottom: 20px;
+    outline-color:blue;
+}
+.location input {
+    padding: 15px 5px 13px 38px;
+    margin-top: 10px;
+    width: 94%;
+    outline-color:blue;
+}
+
+.faSearch{
+    position: relative;
+    color: grey;
+    top: 47px;
+    left: -91px;
+}
+.RiTreasureMapLine{
+    color: #DBDAE3FF;
+    position: relative;
+    left: -99px;
+    font-size: 73px;
+    top: 110px;
+}
+
+
+/* date styles */
+.date{
+    max-width: 510px;
+    margin-bottom: 60px;
+}
+.ImCalendar{
+    position: relative;
+    left: -99px;
+    font-size: 65px;
+    top: 110px;
+    color: #DBDAE3FF;
+}
+.date p{
+    margin-bottom: 50px;
+}
+/* datetime component styles */
+.dateTimeStart,.dateTimeEnd{
+    display: flex;
+    margin-bottom: 40px;
+}
+.eventStart,.eventEnd{
+    width: 260px;
+    margin-right: 100px;
+}
+.timeStart,.timeEnd{
+    width: 260px;
+    margin-right: 0;
+}
+/* timezone */
+.timezone-wrapper{
+    width: 527px;
+    margin-top:10px;
+}
+
+/* price */
+.price{
+    max-width: 510px;
+    margin-bottom: 120px;
+}
+.price p{
+    margin-bottom: 50px;
+}
+.FaDollarSign{
+    color: #DBDAE3FF;
+    font-size: 65px;
+    position: relative;
+    left: -94px;
+    top: 108px;
+}
+.priceInput{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+.price button{
+    padding: 16px 45px;
+    background-color: white;
+    margin-right: 20px;
+    border:1px solid grey;
+    margin-bottom: 30px;
+}
+
+.formBtns{
+    position: relative;
+    left: 190px;
+    margin-bottom: 30px;
+}
+.btnDiscard{
+    padding: 16px 45px;
+    background-color: white;
+    margin-right: 20px;
+    border:1px solid grey;
+    
+}
+.btnSave{
+    padding: 16px 45px;
+    background-color: #D1410CFF;
+    border:1px solid #D1410CFF;
+    color: white;
+}
+
