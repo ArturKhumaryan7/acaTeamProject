@@ -1,12 +1,10 @@
 import React from "react";
-import LikedPage from "../Components/LikedPage";
-import Order from "../Components/Order"
+import Order from "../Components/Orders/Order"
 import '../Styles/Tickets.css'
 import avatar from '../assets/img/user.png'
-import img from '../assets/img/svgexport-8.svg'
 import icon from '../assets/img/svgexport-8 (1).svg'
-import '../Styles/LikedPage.css'
-import '../Styles/Order.css'
+import '../Components/LikedEvents/LikedItems/LikedItems.css'
+import '../Components/Orders/Order.css'
 
 
 const Ticket = ({items,items2}) => {
@@ -21,9 +19,7 @@ const Ticket = ({items,items2}) => {
                         <a  className='ticket-a2' href="">4 likes</a>
                         <a  className='ticket-a2' href="">0 following</a>
                     </ul>
-
                 </div>
-
             </div>
             <div className='qw'>
                 <h1>Orders</h1>

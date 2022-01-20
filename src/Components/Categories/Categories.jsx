@@ -1,5 +1,6 @@
 import React from 'react';
-import image from '../../src/assets/img/svgexport-7.svg'
+import image from '../../assets/img/svgexport-7.svg'
+import "./Categories.css"
 
 const Categories = ({items}) => {
     const [activeItem,setActiveItem] = React.useState(null)

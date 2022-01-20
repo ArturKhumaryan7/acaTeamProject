@@ -35,6 +35,7 @@ import { useState } from 'react';
                                                 <p className='likes' to='/likedEvents'>Likes</p>
                                             </Link>
                             }
+                            {!userLogIn && <Link to="/Tickets">Tickets</Link>}
                             {   !userLogIn && 
                                 <div style={{display:"flex", flexDirection:"column", justifyContent:"end"}} hidden= {true}>
                                     <div className='userAccDropDown' onMouseOver={dropDownShow} onMouseOut={dropDownHide}>

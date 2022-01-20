@@ -129,7 +129,7 @@
     padding-left: 6px;
 }
 
-::placeholder {
+.input::placeholder {
     color: #3659e3;
     font-size: 45px;
 }

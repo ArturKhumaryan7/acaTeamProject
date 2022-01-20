@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import '../Styles/LikedPage.css'
-import like from '../assets/img/svgexport-9.svg'
-import dislike from '../assets/img/svgexport-10.svg'
+import { useState } from 'react';
+import like from '../../../assets/img/svgexport-9.svg'
+import dislike from '../../../assets/img/svgexport-10.svg'
+import "./LikedItems.css"
 
-const LikedPages = ({imageUrl,price,title,page,location,data}) => {
+const LikedItems = ({ imageUrl, price, title, page, location, data }) => {
     const [liked, setLiked] = useState(true);
     const onSelectLike=((isLiked)=>{
         setLiked(!isLiked);
@@ -18,7 +18,7 @@ const LikedPages = ({imageUrl,price,title,page,location,data}) => {
             </div>
             <div className='div2'>
                 <img className='imga' src={imageUrl}/>
-                <button onClick={()=>onSelectLike((liked))} className={'btnl'}>
+                <button onClick={() => onSelectLike((liked))} className={'btnl'}>
                     <img className={'like'} src={liked?like:dislike}/>
                 </button>
 
@@ -27,4 +27,4 @@ const LikedPages = ({imageUrl,price,title,page,location,data}) => {
     );
 };
 
-export default LikedPages;
+export default LikedItems;

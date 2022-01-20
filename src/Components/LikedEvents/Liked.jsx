@@ -1,13 +1,13 @@
 import React from 'react';
-import LikedPage from "../Components/LikedPage";
-import '../../src/Styles/LikedPage.css'
+import './LikedItems/LikedItems.css'
+import LikedItems from './LikedItems/LikedItems';
 
 const Liked = ({items}) => {
     return (
         <div className='top'>
             <h1 className='h1'>Likes</h1>
             {
-                items.map((obj)=><LikedPage key={obj.id} {...obj}/>)
+                items.map((obj)=><LikedItems key={obj.id} {...obj}/>)
             }
         </div>
     );

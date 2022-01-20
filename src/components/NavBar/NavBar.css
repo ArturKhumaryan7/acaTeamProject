@@ -1,7 +1,9 @@
 .NavBar{
     height: 70px;
     width: 100%;
-    z-index: 99999px;
+    z-index: 9999;
+    margin-bottom: -20px;
+    position: relative;
 }
 
 .NavBarItmes{
@@ -122,6 +124,7 @@
     text-decoration: none;
     color: black;
     height: 50px;
+    background-color: white;
     width: 280px;
     border-bottom: 1px solid rgb(226, 226, 226);
 }
