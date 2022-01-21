@@ -4,6 +4,7 @@
     z-index: 9999;
     margin-bottom: -20px;
     position: relative;
+    margin-top: 0;
 }
 
 .NavBarItmes{
@@ -35,12 +36,14 @@
     display: flex;
     width: 600px;
     justify-content: space-between;
+    height: 55px;
 }
 
 .createEvtAndSignIn{
     display: flex;
     margin-top: -20px;
     text-align: center;
+    height: 55px;
 }
 
 .searchIcon{
@@ -131,6 +134,27 @@
 
 .dropDown-Links:hover{
     background-color: rgb(226, 224, 224);
+}
+
+.ticketsLink{
+    text-decoration: none;
+    color: black;
+    height: 70px;
+    width: 80px;
+}
+
+.ticketsLink:hover{
+    background-color: rgb(226, 224, 224);
+}
+
+.ticketsIcon{
+    height: 35px;
+    width: 35px;
+    margin-top: 10px;
+}
+
+.tickets{
+    margin-top: -8px;
 }
 
 .likeIcon{

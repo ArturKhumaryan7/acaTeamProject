@@ -7,7 +7,6 @@ import { useState } from 'react';
         const [userLogIn, setUserLogIn] = useState(!window.localStorage.getItem("isUserLogIned"))
         const [showDropDown, setShowDropDown] = useState(true)
         const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
-        console.log(window.localStorage.getItem("isUserLogIned"))
 
         let dropDownHide = () => {
             setShowDropDown(true)
@@ -35,9 +34,13 @@ import { useState } from 'react';
                                                 <p className='likes' to='/likedEvents'>Likes</p>
                                             </Link>
                             }
-                            {!userLogIn && <Link to="/Tickets">Tickets</Link>}
+                            {!userLogIn && 
+                                        <Link className='ticketsLink' to="/Tickets">
+                                            <img className='ticketsIcon' src="https://icon-library.com/images/ticket-icon-png/ticket-icon-png-26.jpg"/>
+                                            <p className='tickets'>Tickets</p>
+                                        </Link>}
                             {   !userLogIn && 
-                                <div style={{display:"flex", flexDirection:"column", justifyContent:"end"}} hidden= {true}>
+                                <div style={{display:"flex", flexDirection:"column", justifyContent:"end" ,marginBottom:"-219px"}} hidden= {true}>
                                     <div className='userAccDropDown' onMouseOver={dropDownShow} onMouseOut={dropDownHide}>
                                         <img className='accIcon' src="https://cdn4.iconfinder.com/data/icons/e-commerce-181/512/477_profile__avatar__man_-512.png"/>
                                         <p className='NavBarBtnContent'>{userInfo.email}</p>
