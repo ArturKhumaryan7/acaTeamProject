@@ -6,6 +6,141 @@ import "./ContactInfo.css"
         const [showEmailChangeInputs, setShowEmailChangeInputs] = useState(false)
         const [userProfilePicture, setUserProfilePicture] = useState("https://cdn1.iconfinder.com/data/icons/avatar-1-2/512/Add_User1-512.png")
         const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
+        const [emailChangeErrMessage, setEmailChangeErrMessage] = useState("")
+
+        let newEmailChecker = (evt) => {
+            let currentEmail = evt.target.value;
+            let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(currentEmail.length === 0){
+                evt.target.style.borderColor = "gray"
+            } else if(currentEmail.match(regexEmail)) {
+                evt.target.style.borderColor = "gray" 
+            } else {
+                evt.target.style.borderColor = "red" 
+            }
+        }
+
+        let newEmailSetter = () => {
+            let newEmail = document.getElementById("newEmail")
+            let userPassword = document.getElementById("userPassword")
+
+            if(newEmail.value.length !== 0 && newEmail.style.borderColor !== "red" && userPassword.value === userInfo.password){
+                fetch(`https://61e6cdffce3a2d001735944d.mockapi.io/users/${userInfo.id}`, { 
+                    method: "put",
+                    headers: {
+                        "content-type":"application/json"
+                    } ,
+                    body: JSON.stringify({
+                        email: newEmail.value
+                    })
+                }).then(res => {
+                    setEmailChangeErrMessage("")
+                    userInfo.email = newEmail.value
+                    window.localStorage.setItem("currentUser", JSON.stringify(userInfo))
+                    window.location.href = "/"
+                })
+            } else {
+                setEmailChangeErrMessage("Please fill all required fileds")
+            }
+        }
+
+      
+
+        let userNewInfoSetter = () => {
+
+            let newUserNameInp = document.getElementById("newUserNameInp");
+            let newUserSurnameInp = document.getElementById("newUserSurnameInp");
+            let homePhoneInp = document.getElementById("homePhoneInp");
+            let cellPhoneInp = document.getElementById("cellPhoneInp");
+            let jobTitleInp = document.getElementById("jobTitleInp");
+            let companyOrganizationInp = document.getElementById("companyOrganizationInp");
+            let homeAddressInp = document.getElementById("homeAddressInp");
+            let homeCityInp = document.getElementById("homeCityInp");
+            let homeCountryInp = document.getElementById("homeCountryInp");
+            let homePostalCodeInp = document.getElementById("homePostalCodeInp");
+            let workAddressInp = document.getElementById("workAddressInp");
+            let workCityInp = document.getElementById("workCityInp");
+            let workCountryInp = document.getElementById("workCountryInp");
+            let workPostalCodeInp = document.getElementById("workPostalCodeInp");
+            let phoneNumberRegexp = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g
+
+            if(newUserNameInp.value.length > 1){
+                userInfo.name = newUserNameInp.value
+            }
+
+            if(newUserSurnameInp.value.length > 1){
+                userInfo.surname = newUserSurnameInp.value
+            }
+
+            if(homePhoneInp.value.length >= 10 && homePhoneInp.value.match(phoneNumberRegexp)){
+                userInfo.homePhoneNumber = homePhoneInp.value
+            }
+
+            if(cellPhoneInp.value.length >= 10 && cellPhoneInp.value.match(phoneNumberRegexp)){
+                userInfo.cellPhoneNumber = cellPhoneInp.value
+            }
+
+            if(jobTitleInp.value.length > 1){
+                userInfo.jobTitle = jobTitleInp.value
+            }
+
+            if(companyOrganizationInp.value.length > 1){
+                userInfo.jobCompanyOrganization = companyOrganizationInp.value
+            }
+
+            if(homeAddressInp.value.length > 1){
+                userInfo.address = homeAddressInp.value
+            }
+
+            if(homeCityInp.value.length > 1){
+                userInfo.city = homeCityInp.value
+            }
+
+            if(homeCountryInp.value.length > 1){
+                userInfo.country = homeCountryInp.value
+            }
+
+            if(homePostalCodeInp.value.length > 1){
+                userInfo.homePostalCode = homePostalCodeInp.value
+            }
+
+            if(workAddressInp.value.length > 1){
+                userInfo.workAddress = workAddressInp.value
+            }
+
+            if(workCityInp.value.length > 1){
+                userInfo.workCity = workCityInp.value
+            }
+
+            if(workCountryInp.value.length > 1){
+                userInfo.workCountry = workCountryInp.value
+            }
+
+            if(workPostalCodeInp.value.length > 1){
+                userInfo.workPostalCode = workPostalCodeInp.value
+            }
+
+            if(userInfo.profilePicture !== "https://cdn1.iconfinder.com/data/icons/avatar-1-2/512/Add_User1-512.png" || userInfo.profilePicture !== ""){
+                userInfo.profilePicture = userProfilePicture
+            }
+
+            
+
+
+
+
+            fetch(`https://61e6cdffce3a2d001735944d.mockapi.io/users/${userInfo.id}`, { 
+                    method: "put",
+                    headers: {
+                        "content-type":"application/json"
+                    } ,
+                    body: JSON.stringify( userInfo )
+                }).then(res => {
+                    window.localStorage.setItem("currentUser", JSON.stringify(userInfo))
+                    window.location.href = "/"
+                })
+        }
+        
         return(
             <div className="ContactInfo">
                 <h1>Account Information</h1>
@@ -16,21 +151,27 @@ import "./ContactInfo.css"
                     <button className="changeEmailBtn" onClick={() => setShowEmailChangeInputs(!showEmailChangeInputs)}>Change Email</button>
                     <div hidden={!showEmailChangeInputs}>
                         <p style={{margin:"0", marginTop:"30px"}}>New Email Address</p>
-                        <input className="emailChangeInp" type="text" placeholder={userInfo.email}/>
+                        <input className="emailChangeInp" id="newEmail" type="text" placeholder={userInfo.email} onChange={newEmailChecker}/>
                         <p style={{margin:"0", marginTop:"30px"}}>Your Password</p>
-                        <input className="passwordInpForEmailChange" type="password"/><br/>
-                        <button className="emailChangesSaveBtn">Save</button>
+                        <input className="passwordInpForEmailChange" id="userPassword" type="password"/><br/>
+                        <p style={{color: "red"}}>{emailChangeErrMessage}</p><br/>
+                        <button className="emailChangesSaveBtn" onClick={newEmailSetter}>Save</button>
                     </div>
                 </div>
                 <div className="profilePictureChangeDiv">
                     <h2>Profile Photo</h2>
                     <div style={{display:"flex", width:"100%"}}>
                         <div className="profilePictureFrame">
-                            <img className="profilePicture" src={userProfilePicture}/>
+                            <img className="profilePicture" src={userInfo.profilePicture === "" || userInfo.profilePicture === "https://cdn1.iconfinder.com/data/icons/avatar-1-2/512/Add_User1-512.png"?userProfilePicture:userInfo.profilePicture}/>
                         </div>
-                        <div style={{display:"flex", marginTop:"80px", marginLeft:"150px"}}>
-                            <h3>URL</h3>
-                            <input className="pirctureUrlInp" id="pirctureUrlInp" type="text"/>
+                        <div style={{display:"flex",flexDirection:"column", marginTop:"80px", marginLeft:"150px"}}>
+                            <div style={{display:"flex"}}>
+                                <h3>URL</h3>
+                                <input className="pirctureUrlInp" id="pirctureUrlInp" type="text"/>
+                            </div>
+                            <div>
+                                <button className="imgUrlCongirmBtn" onClick={() => setUserProfilePicture(document.getElementById("pirctureUrlInp").value)}>Upload Image</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,42 +191,42 @@ import "./ContactInfo.css"
                     <div style={{display:"flex", marginTop:"20px"}}>
                         <div>
                             <p style={{margin:"0"}}>First Name</p>
-                            <input className="contactInformationInps" type="text" placeholder={userInfo.name}/>
+                            <input className="contactInformationInps" id="newUserNameInp" type="text" placeholder={userInfo.name}/>
                         </div>
                         <div style={{marginLeft:"30px"}}>
                             <p style={{margin:"0"}}>Last Name</p>
-                            <input className="contactInformationInps" type="text" placeholder={userInfo.surname}/><br/>
+                            <input className="contactInformationInps" id="newUserSurnameInp" type="text" placeholder={userInfo.surname}/><br/>
                         </div>
                     </div>
                     <div style={{display:"flex", marginTop:"20px"}}>
                         <div>
                             <p style={{margin:"0"}}>Home Phone</p>
-                            <input className="contactInformationInps" type="text"/>
+                            <input className="contactInformationInps" id="homePhoneInp" type="tel"/>
                         </div>
                         <div style={{marginLeft:"30px"}}>
                             <p style={{margin:"0"}}>Cell Phone</p>
-                            <input className="contactInformationInps" type="text"/><br/>
+                            <input className="contactInformationInps" id="cellPhoneInp" type="tel"/><br/>
                         </div>
                     </div>
                     <div style={{display:"flex", marginTop:"20px"}}>
                         <div>
                             <p style={{margin:"0"}}>Job Title</p>
-                            <input className="contactInformationInps" type="text"/>
+                            <input className="contactInformationInps" id="jobTitleInp" type="text"/>
                         </div>
                         <div style={{marginLeft:"30px"}}>
                             <p style={{margin:"0"}}>Company/Organization</p>
-                            <input className="contactInformationInps" type="text"/><br/>
+                            <input className="contactInformationInps" id="companyOrganizationInp" type="text"/><br/>
                         </div>
                     </div>
                 </div>
                 <div className="Home Address">
                     <h2>Home Address</h2>
                     <p style={{margin:"0", marginTop:"30px"}}>Address</p>
-                    <input className="addressInps" type="text" />
+                    <input className="addressInps" id="homeAddressInp" type="text" />
                     <p style={{margin:"0", marginTop:"15px"}}>City</p>
-                    <input className="addressInps" type="text" placeholder={userInfo.city}/>
+                    <input className="addressInps" id="homeCityInp" type="text" placeholder={userInfo.city}/>
                     <p style={{margin:"0", marginTop:"15px"}}>Country</p>
-                    <select className="addressInps" style={{height:"50px", width:"555px"}}>
+                    <select className="addressInps" id="homeCountryInp" style={{height:"50px", width:"555px"}}>
                         <option value="Afganistan">Afghanistan</option>
                         <option value="Albania">Albania</option>
                         <option value="Algeria">Algeria</option>
@@ -334,16 +475,16 @@ import "./ContactInfo.css"
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
                     <p style={{margin:"0", marginTop:"15px"}}>Zip/Postal Code</p>
-                    <input className="addressInps" type="text" style={{width:"200px"}}/>
+                    <input className="addressInps" id="homePostalCodeInp" type="text" style={{width:"200px"}}/>
                 </div>
-                <div className="Home Address">
+                <div className="Work Address">
                     <h2>Work Address</h2>
                     <p style={{margin:"0", marginTop:"30px"}}>Address</p>
-                    <input className="workAddressInps" type="text" />
+                    <input className="workAddressInps" id="workAddressInp" type="text" />
                     <p style={{margin:"0", marginTop:"15px"}}>City</p>
-                    <input className="workAddressInps" type="text" />
+                    <input className="workAddressInps" id="workCityInp" type="text" />
                     <p style={{margin:"0", marginTop:"15px"}}>Country</p>
-                    <select className="workAddressInps" style={{height:"50px", width:"555px"}}>
+                    <select className="workAddressInps" id="workCountryInp" style={{height:"50px", width:"555px"}}>
                         <option value="Afganistan">Afghanistan</option>
                         <option value="Albania">Albania</option>
                         <option value="Algeria">Algeria</option>
@@ -592,9 +733,9 @@ import "./ContactInfo.css"
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
                     <p style={{margin:"0", marginTop:"15px"}}>Zip/Postal Code</p>
-                    <input className="workAddressInps" type="text" style={{width:"200px"}}/>
+                    <input className="workAddressInps" id="workPostalCodeInp" type="text" style={{width:"200px"}}/>
                 </div>
-                <button className="newAccInfoSaveBtn">Save</button>
+                <button className="newAccInfoSaveBtn" onClick={userNewInfoSetter}>Save</button>
 
 
 

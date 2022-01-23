@@ -1,6 +1,26 @@
+import { useState } from "react"
 import "./DeleteAccount.css"
 
     function DeleteAccount(){
+        const [deleteAccErrMessage, setDeleteAccErrMessage] = useState("")
+        const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
+
+        let userRemover = () => {
+            let deleteAccInpForClose = document.getElementById("deleteAccInpForClose")
+            let deleteAccPasswordInp = document.getElementById("deleteAccPasswordInp")
+
+            if(deleteAccInpForClose.value === "CLOSE" && deleteAccPasswordInp.value === userInfo.password){
+                fetch(`https://61e6cdffce3a2d001735944d.mockapi.io/users/${userInfo.id}`, { method: "delete" })
+                .then(res => {
+                    setDeleteAccErrMessage("")
+                    window.localStorage.clear("currentUser")
+                    window.location.href= "/"
+                })
+            } else {
+                setDeleteAccErrMessage("Please fill all required fileds")
+            }
+        }
+
         return(
             <div className="DeleteAccount">
                 <h1>Delete Account</h1>
@@ -20,13 +40,14 @@ import "./DeleteAccount.css"
                 <p style={{color:"gray"}}>If you selected the "Delete my account after closing it" option above, you are also confirming that you wish to delete your account</p>
                 <div style={{display:"flex", justifyContent:"space-between", width:"50%"}}>
                     <p>Type "CLOSE":</p>
-                    <input className="deleteAccInps" type="text"/>
+                    <input className="deleteAccInps" id="deleteAccInpForClose" type="text"/>
                 </div>
                 <div style={{display:"flex", justifyContent:"space-between", width:"50%", marginTop:"20px"}}>
                     <p>Enter your password:</p>
-                    <input className="deleteAccInps" type="password"/>
+                    <input className="deleteAccInps" id="deleteAccPasswordInp" type="password"/>
                 </div>
-                <button className="accDeleteBtn">Delete Account</button>
+                <p style={{color:"red"}}>{deleteAccErrMessage}</p>
+                <button className="accDeleteBtn" onClick={userRemover}>Delete Account</button>
             </div>
         )
     }

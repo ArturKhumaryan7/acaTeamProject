@@ -22,12 +22,15 @@ import Home from "./Components/Home/Home";
     const [orders, setOrders] = useState([]);
     const [events, setEvents] = useState([]);
 
+
     useEffect(()=>{
-        axios.get('https://61e2a20e3050a10017682205.mockapi.io/events').then(({data})=>{
+        axios.get('https://61e2a20e3050a10017682205.mockapi.io/events')
+        .then(({data})=>{
             setOrders(data);
         })
 
-        axios.get('https://61e2a20e3050a10017682205.mockapi.io/events').then(({data})=>{
+        axios.get('https://61e2a20e3050a10017682205.mockapi.io/events')
+        .then(({data})=>{
             setEvents(data);
         })
     },[])
@@ -35,7 +38,7 @@ import Home from "./Components/Home/Home";
 
     return (
       <div className="App">
-          { (!hideNavBar || window.location.href !== "http://localhost:3000/logIn") && <NavBar hideNavBar={(status) => setHideNavBar(status)}/>}
+          { !hideNavBar && window.location.href !== "http://localhost:3000/logIn" && <NavBar hideNavBar={(status) => setHideNavBar(status)}/>}
           <Routes>
             <Route path="/logIn/*" element={<LogIn />} hideNavBar={(status) => setHideNavBar(status)}/> 
             <Route  path="/account-settings" element={<AccountSettings />}>

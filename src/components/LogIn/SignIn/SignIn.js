@@ -1,6 +1,7 @@
 import "./SignIn.css"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
+import { signInWithFacebook, signInWithGitHub, singInWithGoogle } from "../../../Firebase/Firebase";
 
 
     function SignIn({ showSignUp, hideNavBar }){
@@ -62,6 +63,7 @@ import { useEffect, useState } from "react";
         }
 
 
+
         return(
             <div className="signIn" onKeyPress={onEnterSignIn}>                    
                 <Link className='siteTitle' to="/" onClick={() => hideNavBar(false)}>YourEvent</Link>
@@ -75,9 +77,9 @@ import { useEffect, useState } from "react";
                 </div>
                 <hr style={{width:"350px", margin:"0", marginTop:"10px", marginBottom:"10px"}}/>
                 <div style={{display:"flex", flexDirection:"column"}}>
-                    <button className="sociialMediaBtns"><img className="socialMediaIcons" src="https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-512.png"/><p style={{marginLeft:"20px", marginTop:"10px"}}>Sign In with facebook</p></button>
-                    <button className="sociialMediaBtns"><img className="socialMediaIcons" src="https://freesvg.org/img/1534129544.png"/><p style={{marginLeft:"20px", marginTop:"10px"}}>Sign In with Google</p></button>
-                    <button className="sociialMediaBtns"><img className="socialMediaIcons" src="https://cdn-icons-png.flaticon.com/512/25/25231.png"/><p style={{marginLeft:"20px", marginTop:"10px"}}>Sign In with GitHub</p></button>
+                    <button className="sociialMediaBtns" onClick={signInWithFacebook}><img className="socialMediaIcons" src="https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-512.png"/><p style={{marginLeft:"20px", marginTop:"10px"}}>Sign In with facebook</p></button>
+                    <button className="sociialMediaBtns" onClick={singInWithGoogle}><img className="socialMediaIcons" src="https://freesvg.org/img/1534129544.png"/><p style={{marginLeft:"20px", marginTop:"10px"}}>Sign In with Google</p></button>
+                    <button className="sociialMediaBtns" onClick={signInWithGitHub}><img className="socialMediaIcons" src="https://cdn-icons-png.flaticon.com/512/25/25231.png"/><p style={{marginLeft:"20px", marginTop:"10px"}}>Sign In with GitHub</p></button>
                 </div>
                 <hr style={{width:"350px", margin:"0", marginTop:"10px"}}/>
             </div>

@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
     function LogIn({ hideNavBar }){
 
         const [showSignUp, setShowSignUp] = useState(false)
-        
+        const [a, setA] = useState("narek")
+
         return(
             <div className='LogInPage' >
                 { !showSignUp && <SignIn hideNavBar={hideNavBar} showSignUp={() => setShowSignUp(true)}/> }
