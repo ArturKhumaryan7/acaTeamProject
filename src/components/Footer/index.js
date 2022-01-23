@@ -16,9 +16,9 @@ const Footer = () => {
                    t("Online Seminars"),t("Online Speed Dating"),t("Virtual Wine Tasting")]
     return(
         
-        <footer>
-            <div className="footer-size">
-                <div className="footer-container">
+        <footer className="main-footer">
+            <div className="main-footer-size">
+                <div className="main-footer-container">
                     <section>
                         <h4>{t("findEvnts")}</h4>
                         {events.map((item) => {
@@ -34,8 +34,8 @@ const Footer = () => {
                         <p><a href="https://instagram.com" target="_blank">Instagram</a></p>
                     </section>
 
-                    <section className="select">
-                        <select name="language" onChange={(e) => changeLanguage(e)}>
+                    <section className="main-footer-select">
+                        <select name="main-footer-language" onChange={(e) => changeLanguage(e)}>
                             <option value="en">English</option>
                             <option value="hy">Armenian</option>
                         </select>
