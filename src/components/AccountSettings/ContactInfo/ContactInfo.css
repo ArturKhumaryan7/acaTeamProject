@@ -90,6 +90,20 @@
     outline-color: blue;
 }
 
+.imgUrlCongirmBtn{
+    width: 350px;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: rgb(255, 68, 0);
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.imgUrlCongirmBtn:hover{
+    background-color: rgb(255, 93, 34);
+}
+
 .contactInformationInps{
     height: 40px;
     width: 300px;

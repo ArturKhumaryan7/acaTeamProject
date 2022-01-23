@@ -15,6 +15,7 @@ const Home = () => {
                 'Music',
                 'Food & Drink',
                 'Charity & Causes']}/>
+                
         </div>
     );
 };

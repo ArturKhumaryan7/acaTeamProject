@@ -42,18 +42,19 @@ import { useState } from 'react';
                             {   !userLogIn && 
                                 <div style={{display:"flex", flexDirection:"column", justifyContent:"end" ,marginBottom:"-219px"}} hidden= {true}>
                                     <div className='userAccDropDown' onMouseOver={dropDownShow} onMouseOut={dropDownHide}>
-                                        <img className='accIcon' src="https://cdn4.iconfinder.com/data/icons/e-commerce-181/512/477_profile__avatar__man_-512.png"/>
+                                        <img className='accIcon' src={userInfo.profilePicture === ""?"https://cdn4.iconfinder.com/data/icons/e-commerce-181/512/477_profile__avatar__man_-512.png":userInfo.profilePicture}/>
                                         <p className='NavBarBtnContent'>{userInfo.email}</p>
                                         <img className='dropDownIcon' src="https://cdn-icons-png.flaticon.com/512/60/60995.png"/>
                                     </div>
                                     <div className='dropDown' style = {{visibility:showDropDown ? "hidden": "visible"}} onMouseOver={dropDownShow} onMouseOut={dropDownHide}>
-                                        <Link className='dropDown-Links' to='/ManageEvents'><p className='dropDown-content' >Manage my events</p></Link>
+                                        <Link className='dropDown-Links' to='/Tickets'><p className='dropDown-content' >Tickets</p></Link>
                                         <Link className='dropDown-Links' to='/likedEvents'><p className='dropDown-content' >Liked</p></Link>
-                                        <Link className='dropDown-Links' to='/account-settings'><p className='dropDown-content'>Account Settings</p></Link>
+                                        <Link className='dropDown-Links' to='/account-settings/ContactInfo'><p className='dropDown-content'>Account Settings</p></Link>
                                         <Link className='dropDown-Links' to='/'><p className='dropDown-content' onClick = {() => {
                                                 setUserLogIn(!userLogIn)
                                                 window.localStorage.setItem("isUserLogIned", false)
                                                 window.localStorage.clear("currentUser")
+                                                window.location.href = "/"
                                             }}>Log Out</p></Link>
                                     </div>
                                 </div>

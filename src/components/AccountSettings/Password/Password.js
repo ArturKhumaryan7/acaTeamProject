@@ -9,25 +9,26 @@ import "./Password.css"
         const nonHiddenPasswordImg = window.location.origin + "/passwordNotHidden.png";
         const [passwordVisibility, setPasswordVisibility] = useState(hiddenPasswordImg)
         const [repeatPasswordVisibility, setRepeatPasswordVisibility] = useState(hiddenPasswordImg) 
+        const [passChangeErrMessage, setPassChangeErrMessage] = useState("")
         const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
          
 
         let passwordVisibilityChanger = (evt) => {
             if(evt.target.src === hiddenPasswordImg){
-                document.getElementById("passwordInp").type = "text"
+                document.getElementById("newPasswordInp").type = "text"
                 setPasswordVisibility(nonHiddenPasswordImg)
             } else{
-                document.getElementById("passwordInp").type = "password"
+                document.getElementById("newPasswordInp").type = "password"
                 setPasswordVisibility(hiddenPasswordImg)
             }
         }
 
         let repeatPasswordVisibilityChanger = (evt) => {
             if(evt.target.src === hiddenPasswordImg){
-                document.getElementById("repeatPasswordInp").type = "text"
+                document.getElementById("repeatNewPasswordInp").type = "text"
                 setRepeatPasswordVisibility(nonHiddenPasswordImg)
             } else{
-                document.getElementById("repeatPasswordInp").type = "password"
+                document.getElementById("repeatNewPasswordInp").type = "password"
                 setRepeatPasswordVisibility(hiddenPasswordImg)
             }
         }
@@ -75,7 +76,7 @@ import "./Password.css"
         }
 
         let repeatPasswordChecker = (evt) => {
-            let password = document.getElementById("passwordInp")
+            let password = document.getElementById("newPasswordInp")
             
             
             if(password.value !== evt.target.value && evt.target.value.length){
@@ -84,20 +85,51 @@ import "./Password.css"
                 evt.target.style.borderColor = "gray"
             }
         }
+
+        let newPasswordSetter = () => {
+            let currentPasswordInp = document.getElementById("currentPasswordInp")
+            let newPasswordInp = document.getElementById("newPasswordInp")
+            let repeatNewPasswordInp = document.getElementById("repeatNewPasswordInp")
+
+            console.log(userInfo)
+            if(currentPasswordInp.value === userInfo.password && newPasswordInp.style.borderColor !== "red" && 
+            repeatNewPasswordInp.style.borderColor !== "red" && newPasswordInp.value.length !== 0 && repeatNewPasswordInp.value.length !== 0){
+                fetch(`https://61e6cdffce3a2d001735944d.mockapi.io/users/${userInfo.id}`, { 
+                    method: "put",
+                    headers: {
+                        "content-type":"application/json"
+                    } ,
+                    body: JSON.stringify({
+                        password: newPasswordInp.value
+                    })
+                }).then(res => {
+                    setPassChangeErrMessage("")
+                    userInfo.password = newPasswordInp.value
+                    window.localStorage.setItem("currentUser", JSON.stringify(userInfo))
+                    window.location.href = "/"
+                })
+
+            } else {
+                setPassChangeErrMessage("Please fill all required fileds")
+            }
+        }
+
+        
         
         return(
             <div className="Password">
                 <h1>Your Password</h1>
                 <hr/>
                 <h6>Set a new password</h6>
-                <input className="passwordChangeInps" type="password" placeholder="Current Password"/><br/>
-                <input className="passwordChangeInps" type="password" id="passwordInp" placeholder="New Password" onChange={passwordQualityChecker}/><img className="changePasswordVisibility" src={passwordVisibility} onClick={passwordVisibilityChanger}/><br/>
-                <input className="passwordChangeInps" type="password" id="repeatPasswordInp" placeholder="Repeat Password" onChange={repeatPasswordChecker}/><img className="changePasswordVisibility" src={repeatPasswordVisibility} onClick={repeatPasswordVisibilityChanger}/>
+                <input className="passwordChangeInps" id="currentPasswordInp" type="password" placeholder="Current Password"/><br/>
+                <input className="passwordChangeInps" type="password" id="newPasswordInp" placeholder="New Password" onChange={passwordQualityChecker}/><img className="changePasswordVisibility" src={passwordVisibility} onClick={passwordVisibilityChanger}/><br/>
+                <input className="passwordChangeInps" type="password" id="repeatNewPasswordInp" placeholder="Repeat Password" onChange={repeatPasswordChecker}/><img className="changePasswordVisibility" src={repeatPasswordVisibility} onClick={repeatPasswordVisibilityChanger}/>
                 <div className="passwordQualityIndicatorDiv" id="passwordQualityIndicator">
                     <div className="indicator" id="indicator"></div>
                 </div>
                 <p style={{fontSize:"small", marginTop:"4px"}} id="passwordGuide">Your password must contain at least 8 characters</p>
-                <button className="newPassSaveBtn">Save</button>
+                <p style={{color:"red"}}>{passChangeErrMessage}</p>
+                <button className="newPassSaveBtn" onClick={newPasswordSetter}>Save</button>
             </div>
         )
     }
