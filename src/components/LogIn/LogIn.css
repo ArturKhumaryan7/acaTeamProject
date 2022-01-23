@@ -1,0 +1,14 @@
+.LogInPage{
+    display: flex;
+    justify-content: end;
+}
+
+
+.logInPictureDiv{
+    height: 625px;
+    width: 670px;
+    background-image: url("https://www.bgcconejo.org/wp-content/uploads/2017/09/events.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
