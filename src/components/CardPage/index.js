@@ -5,6 +5,7 @@ import Card from "../Card";
 import axios from "axios";
 import styels from "./CardPage.css"
 
+
 function CardPage({ selectEvent }) {
   const [event, setEvent] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

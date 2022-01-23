@@ -1,0 +1,184 @@
+.NavBar{
+    height: 70px;
+    width: 100%;
+    z-index: 9999;
+    margin-bottom: -20px;
+    position: relative;
+    margin-top: 0;
+}
+
+.NavBarItmes{
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-between;
+}
+
+.siteTitle{
+    margin: 0px;
+    color: rgb(245, 122, 78);
+    cursor: pointer;
+    text-decoration: none;
+    font-size: x-large;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 5px;
+}
+
+.searchInp{
+    height: 35px;
+    width: 400px;
+    border: none;
+    background-color: rgb(243, 242, 242);
+    font-size: large;
+    border-radius: 10px;
+}
+
+.titleAndSearch{
+    display: flex;
+    width: 600px;
+    justify-content: space-between;
+    height: 55px;
+}
+
+.createEvtAndSignIn{
+    display: flex;
+    margin-top: -20px;
+    text-align: center;
+    height: 55px;
+}
+
+.searchIcon{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.searchInp::placeholder{
+    color: rgb(192, 192, 192);
+}
+
+.createEvtBtn{
+    height: 70px;
+    width: 150px;
+    cursor: pointer;
+    color: orangered;
+    text-decoration: none;
+}
+
+.createEvtBtn:hover{
+    background-color: rgb(226, 224, 224);
+}
+
+.signInBtn{
+    height: 70px;
+    width: 90px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.signInBtn:hover{
+    background-color: rgb(226, 224, 224);
+}
+
+.NavBarBtnContent{
+    margin-top: 25px;
+}
+
+.userAccDropDown{
+    height: 70px;
+    width: 280px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.userAccDropDown:hover{
+    background-color: rgb(226, 224, 224);
+}
+
+.dropDownIcon{
+    height: 15px;
+    width: 15px;
+    margin-top: 30px;
+    margin-left: 4px;
+}
+
+.accIcon{
+    height: 30px;
+    width: 30px;
+    margin-top: 22px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+.dropDown{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.dropDown-content{
+    margin-left: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: gray;
+}
+
+.dropDown-Links{
+    text-decoration: none;
+    color: black;
+    height: 50px;
+    background-color: white;
+    width: 280px;
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.dropDown-Links:hover{
+    background-color: rgb(226, 224, 224);
+}
+
+.ticketsLink{
+    text-decoration: none;
+    color: black;
+    height: 70px;
+    width: 80px;
+}
+
+.ticketsLink:hover{
+    background-color: rgb(226, 224, 224);
+}
+
+.ticketsIcon{
+    height: 35px;
+    width: 35px;
+    margin-top: 10px;
+}
+
+.tickets{
+    margin-top: -8px;
+}
+
+.likeIcon{
+    height: 35px;
+    width: 35px;
+    margin-top: 10px;
+}
+
+.likes{
+    margin-top: -8px;
+}
+
+.likesLink{
+    text-decoration: none;
+    color: black;
+    height: 70px;
+    width: 80px;
+}
+
+
+.likesLink:hover{
+    background-color: rgb(226, 224, 224);
+}
+
+
+

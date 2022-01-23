@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import styles from "./EventPage.css";
 
@@ -106,7 +105,7 @@ function EventPage({
       <div className="gGrid">
         <div className="eventListingBody">
           <div className="listingHeroDetailsMainContaine">
-            <div className="header">
+            <div className="headerTop">
               <div className="eventImage">
                 <div className="listingHeroBadgeContainer">
                   <span className="badgePrice" data-automation="hero-badge">

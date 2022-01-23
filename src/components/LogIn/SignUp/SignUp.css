@@ -1,0 +1,97 @@
+.signUp{
+    height: 605px;
+    width: 500px;
+    margin-top: 20px;
+}
+
+
+.regEmail{
+    margin-top: 10px;
+    height: 45px;
+    width: 350px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: large;
+    outline: none;
+}
+
+.regName{
+    margin-top: 10px;
+    height: 45px;
+    width: 130px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: large;
+    outline: none;
+}
+
+.regSurname{
+    margin-top: 10px;
+    height: 45px;
+    width: 205px;
+    margin-left: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: large;
+    outline: none;
+}
+
+.regPassword{
+    margin-top: 10px;
+    height: 45px;
+    width: 350px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: large;
+    outline: none;
+}
+
+.registerBtn{
+    margin-top: 10px;
+    height: 40px;
+    width: 357px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: orangered;
+    cursor: pointer;
+}
+
+
+.registerBtn:hover{
+    background-color: rgb(255, 95, 37);
+}
+
+.SignInBtn{
+    margin-top: 10px;
+    height: 40px;
+    width: 357px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: orangered;
+    cursor: pointer;
+}
+
+.SignInBtn:hover{
+    background-color: rgb(255, 95, 37);
+}
+
+.passwordVisibility{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    margin-top: 18.5px;
+    margin-left: -40px;
+    cursor: pointer;
+}
+
+.passwordQualityIndicatorDiv{
+    width: 350px;
+    height: 7px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.indicator{
+    height: 100%;
+}
