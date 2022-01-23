@@ -1,8 +1,8 @@
 
   .card {
     position: relative;
-    width: 250px;
-    height: 230px;
+    width: 280px;
+    height: 250px;
     background: no-repeat top;
     background-size: cover;
     border-radius: 20px;
@@ -10,7 +10,7 @@
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
     display: grid;
     grid-template-rows: 50% 50%;
-    margin-right: 40px;
+    margin: 20px;
   }
   
   
@@ -19,7 +19,7 @@
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
   }
   
-  .event-info {
+  .eventInfo {
     position: relative;
     display: grid;
     grid-template-areas: 
@@ -31,7 +31,7 @@
     padding: 16px;
   }
   
-  .event-info * {
+  .eventInfo * {
     position: relative;
   }
   
@@ -42,11 +42,11 @@
     letter-spacing: 1px;
   }
   
-  .additional-info {
+  .additionalInfo {
     grid-area: info;
   }
   
-  .additional-info p {
+  .additionalInfo p {
     font-size: 9px;
     margin-top: 3px;
     letter-spacing: 0.5px;
@@ -58,8 +58,8 @@
     position: absolute;
     top: 0;
     left: 25px;
-    width: 45px;
-    height: 45px;
+    width: 58px;
+    height: 50px;
     background-color: #fff;
     color: #dd5e89;
     border-radius: 50%;
@@ -67,9 +67,9 @@
     justify-content: center;
     align-items: center;
     box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     cursor: pointer;
   }
   
@@ -78,7 +78,7 @@
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
   }
   
-  .event-info::before {
+  .eventInfo::before {
     content: "";
     position: absolute;
     top: 10px;
@@ -106,14 +106,12 @@
     color: #dd5e89;
   }
 
-.cartImage {
+  .fas {
+    margin-right: 2px;
+  }
+
+.cardImage {
   cursor: pointer;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: #fff;
 
-}

@@ -1,0 +1,598 @@
+
+.clrfix::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.eventListingHeader {
+    position: absolute;
+    top: 61px;
+    width: 100%;
+    z-index: -1;
+    height: 66vh;
+    max-height: inherit;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+.listingHeroImage {
+    filter: blur(50px) brightness(.9);
+    display: inline-block;
+    width: 200%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.EventPageHead {
+    margin: 0;
+    padding: 0;
+}
+
+.notificationBoxListing {
+  position: relative;
+  z-index: 10000;
+}
+
+.gGrid {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.eventListingBody {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 15%);
+    margin-top: 70px;
+    position: relative;
+    margin-bottom: 50px;
+    padding-top: 40px;
+}
+
+.listingHeroDetailsMainContaine {
+    position: relative;
+}
+
+.header {
+        font-size: 0;
+        letter-spacing: 0;
+}
+
+.eventImage {
+    padding-left: 0;
+    padding-right: 0;
+    border-top-left-radius: 4px;
+    font-size: .9333333333rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: .5px;
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    width: 66.6666666667%;
+    height: 395px;
+}
+
+.listingHeroBadgeContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.badgePrice {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    display: none!important;
+}
+
+.thisEventImage {
+    animation-delay: .6s;
+    animation-duration: .7s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-name: fadeIn;
+    position: relative;
+}
+
+.headerInfo {
+    background-color: rgba(255,255,255,0.9);
+    border-top-right-radius: 4px;
+    position: absolute;
+    height: 400px;
+    right: 0;
+    font-size: .9333333333rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: .5px;
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    width: 33.3333333333%;
+}
+
+.headerDateDiv {
+    padding-bottom: 20px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.headerDate {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+
+.eventDayMon {
+    text-align: center;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin: 2px;
+}
+
+.eventDateMon {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.eventDateDay {
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 1.25em;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.headerBody {
+    padding-top: 64px;
+}
+
+.headerEventName {
+    padding-bottom: 2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #1E0A3C;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 21px;
+    letter-spacing: .5px;
+    word-break: break-word;
+    padding: 0px;
+}
+
+.headerEventFollowers {
+    margin-top: 15px;
+}
+
+.headerEventFollowTitle::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.headerEventFollowInfo {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    -webkit-box-pack: end;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+}
+
+.followCount {
+    color: #6f7287;
+    padding-right: 8px;
+}
+
+.followButton {
+    height: 24px;
+    font-size: 12px;
+    line-height: 16px;
+    padding-left: 9px;
+    padding-right: 9px;
+    color: var(--eds-control,#3659e3);
+    fill: var(--eds-control,#3659e3);
+    background: var(--eds-background,#fff);
+    box-sizing: border-box;
+    font-weight: 600;
+    letter-spacing: .2px;
+    border: 2px solid var(--eds-ui-500,#a9a8b3);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.followButtonClick {
+    height: 24px;
+    font-size: 12px;
+    line-height: 16px;
+    padding-left: 9px;
+    padding-right: 9px;
+    color: var(--eds-control,#ffffff);
+    fill: var(--eds-control,#979797);
+    background: var(--eds-background,rgb(93, 114, 238));
+    box-sizing: border-box;
+    font-weight: 600;
+    letter-spacing: .2px;
+    border: 2px solid var(--eds-ui-500,#a9a8b3);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.followButton:before {
+    z-index: -190;
+}
+
+.headrPrice {
+    position: absolute;
+    bottom: 20px;
+}
+
+.listingPanelWrapper {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.listingPanelStyle {
+    width: 100%;
+    height: 66px;
+    border: none;
+    background-color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.listingPanel {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    max-height: inherit;
+    height: 66px;
+    z-index: 10000;
+    border-style: solid;
+    border-color: #DBDAE3;
+    border-width: 1px 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 8px 20px -9px rgb(0 0 0 / 30%);
+}
+
+.listingPanelScroll {
+    position: fixed;
+    top: 0;
+    width: 1080px;
+    max-height: inherit;
+    height: 66px;
+    z-index: 10000;
+    border-style: solid;
+    border-color: #DBDAE3;
+    border-width: 1px 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 8px 20px -9px rgb(0 0 0 / 30%);
+}
+
+/*@media only screen and (min-width: 1080px) {
+    .listingPanel {
+        width: 1080px;
+        position: fixed;
+        left: 216px;
+    }
+}*/
+
+
+.listingPanelElements {
+    display: flex;
+    align-items: center;
+    font-size: 0;
+    letter-spacing: 0;
+    margin-top: 10px;
+}
+
+.listingPanelElementsScroll {
+    display: flex;
+    align-items: center;
+    font-size: 0;
+    letter-spacing: 0;
+}
+
+.listingPanelGCell {
+    position: relative;
+    overflow: visible !important;
+    font-weight: 400;
+    letter-spacing: .5px;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+}
+
+.isHiddenAccessible {
+    position: absolute!important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+}
+
+.listingPanelAction{
+    display: flex !important;
+}
+
+.eventShare {
+    display: inline;
+    animation-delay: 1.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-name: fadeInDown;
+    z-index: 1 !important;
+}
+
+.edsTooltips {
+    display: inline-block;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.addIconButton {
+    display: inline-block;
+    text-align: -webkit-match-parent;
+    list-style: none;
+    font-size: .9333333333rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: .5px;
+}
+
+.shareAction {
+    border-radius: 40px;
+    height: 40px;
+    transition: all .4s cubic-bezier(.4,0,.3,1);
+    width: 40px;
+    color: var(--eds-ui-700,#4b4d63);
+    fill: var(--eds-ui-700,#4b4d63);
+    background: none;
+    border: none;
+    text-align: left;
+    -webkit-appearance: button;
+    cursor: pointer;
+    text-transform: none;
+    overflow: visible;
+    font: inherit;
+    margin: 0;
+}
+
+.eventLiked {
+    display: inline;
+    animation-delay: 1.4s;
+    animation-duration: .7s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-name: fadeInDown;
+}
+
+.likedAction {
+    border-radius: 50%;
+    background-color: #FFF;
+    border-color: #FFF;
+    background-clip: unset;
+    padding: 9px 8px 0;
+    fill: #4B4D63;
+    color: #4B4D63;
+    line-height: 18px;
+    zoom: 1;
+    transition: all .2s ease-out;
+    vertical-align: middle;
+    position: relative;
+    width: auto;
+    height: 44px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+.heart::before {
+     content: "";
+}
+
+.listingEvenetPrice {
+    position: relative;
+    width: 41.6666666667%;
+}
+
+.lsitingEventInfoPricePanel {
+   display: none !important;
+}
+
+.panelDisyplayPrice {
+    line-height: 44px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 18px;
+    text-align: right;
+    margin: 10px;
+}
+
+.registerButton {
+    height: 44px;
+    width: 320px;
+    margin: auto;
+}
+
+.registerAction{
+    text-transform: none;
+    width: 100%;
+    max-width: 320px;
+    float: none;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 0;
+    font-weight: 600;
+    color: #FFF;
+    background-color: #0D8547;
+    display: inline-block;
+    zoom: 1;
+    transition: all .2s ease-out;
+    vertical-align: middle;
+    position: relative;
+    height: 44px;
+    border: 2px solid transparent;
+    padding: 0 30px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    line-height: 26px;
+    font-size: 15px;
+    border-radius: 4px;
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+.aboutThisEvent {
+    position: relative;
+    font-size: .9333333333rem;
+    line-height: 1.25rem;
+}
+
+.eventSection {
+    padding-top: 50px;
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    margin-left: 8.3333333333%;
+    width: 90%;
+}
+
+.structuredContent {
+    width: 58.3333333333%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.textBody {
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.textBodyLarge {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+    letter-spacing: .25px;
+    margin-right: -0.25px;
+    margin-right: 20px;
+}
+
+.hasUserGeneratedContent {
+    text-rendering: optimizeLegibility;
+    padding-top: 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: left;
+    margin-right: 45px;
+}
+
+.structuredContentRichText {
+    color: #6F7287;
+    font-size: 15px;
+    line-height: 1.9rem;
+    padding-top: 0;
+    letter-spacing: 0.5px;
+}
+
+.eventDetails {
+    margin-left: 8.3333333333%;
+    width: 33.3333333333%;
+}
+
+.labelPrimary {
+    color: #1E0A3C;
+    line-height: 1.4rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-transform: none !important;
+    margin-bottom: 10px;
+}
+
+.eventDetailsData {
+    margin-bottom: 50px;
+    font-size: .9333333333rem;
+    line-height: normal;
+    letter-spacing: 0;
+}
+
+.labelPrimary {
+    color: #1E0A3C;
+    line-height: 1.4rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+.shareEvenet {
+    margin: 10px;
+    padding: 5px;
+}
+
+.shareEvenetTitle {
+    color: #1E0A3C;
+    line-height: 1.4rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-transform: none !important;
+    letter-spacing: 1px;
+}
+
+.shareIcon {
+    margin-bottom: 10px;
+}
+
+.facebookIconAction, .messengerIconAction, .linkedinIconAction, .twitterIconAction, .emailIconAction {
+    border-radius: 40px;
+    height: 40px;
+    padding: 8px;
+    transition: all .4s cubic-bezier(.4,0,.3,1);
+    width: 40px;
+    color: var(--eds-ui-700,#4b4d63);
+    fill: var(--eds-ui-700,#4b4d63);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #dcdde2;
+}

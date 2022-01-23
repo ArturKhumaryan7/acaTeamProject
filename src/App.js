@@ -1,34 +1,17 @@
 import React from "react";
-import react from "react";
-import Card from "./components/Card";
-import axios from "axios";
-
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import EventPage from "./Components/EventPage";
+import CardPage from "./Components/CardPage";
 
 function App() {
-  const [event, setEvent] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(false);
-
-  react.useEffect(() => {
-    axios.get('https://61e2a20e3050a10017682205.mockapi.io/events').then((res) => {
-    setEvent(res.data)
-  })
-  }, [])
-
+  const [curentEvent, setCurentEvent] = useState(undefined);
   return (
     <div className="App">
-        <div className="header"> 
-              {event.map((obj) => 
-              <Card 
-              title={obj.title} 
-              price={obj.price} 
-              imageUrl={obj.imageUrl} 
-              page={obj.page} 
-              location={obj.location} 
-              data={obj.data} 
-              followers={obj.followers} 
-              loading = {isLoading}
-              />) }
-         </div>
+      <Routes>
+        <Route path="/" element={<CardPage selectEvent={setCurentEvent} />} />
+        <Route path="/event/:id" element={<EventPage {...curentEvent} />} />
+      </Routes>
     </div>
   );
 }

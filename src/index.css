@@ -12,27 +12,3 @@ code {
     monospace;
 }
 
-.App {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #e7f6ff;
-}
-
-h1 {
-  align-items: center;
-  display: flex;
-}
-
-
-.header {
-  min-height: 100vh;
-  background-color: #f3f3f3;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  margin: 0 auto;
-  display: flex;
-  max-width: 1920px;
-  flex-wrap: wrap;
-}
