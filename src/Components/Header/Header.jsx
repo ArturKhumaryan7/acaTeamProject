@@ -19,7 +19,7 @@ const Header = () => {
                                     <img className='svg' src={image}/>
                                     <p className='pi'> Now is your time</p>
                                     <div className='btn'>
-                                        <a className='btn1' href='http://localhost:3000/Liked'>
+                                        <a className='btn1' href='http://localhost:3000/likedEvents'>
                                             <div className='btn2'>
                                                 Find your next event
                                             </div>

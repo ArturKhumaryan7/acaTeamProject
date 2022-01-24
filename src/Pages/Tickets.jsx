@@ -16,9 +16,7 @@ const Tickets = ({items}) => {
                         <a  className='ticket-a2' href="">0 likes</a>
                         <a  className='ticket-a2' href="">0 following</a>
                     </ul>
-
                 </div>
-
             </div>
             <div className='qw'>
                 <h1>Orders</h1>
@@ -31,7 +29,7 @@ const Tickets = ({items}) => {
                 </div>
 
                 <hr className='hr'/>
-                <a className='ticket-a' href=''><h1>Interests</h1><img className='a-img' src={icon}/> </a><hr className='hr'/>
+                <div><a className='ticket-a' href=''><h1>Interests</h1><img className='a-img' src={icon}/> </a></div><hr className='hr'/>
                 <a className='ticket-a' href=''><h1>Collections</h1><img className='a-img' src={icon}/> </a><hr className='hr'/>
             </div>
         </div>
