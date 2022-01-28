@@ -1,8 +1,11 @@
 import React from 'react';
 import image from '../../assets/img/svgexport-6.svg'
 import "./Header.css"
+import {useTranslation} from "react-i18next";
 
 const Header = () => {
+    const { t } = useTranslation();
+    
     return (
         <div className='head'>
             <section className='header'>
@@ -21,7 +24,7 @@ const Header = () => {
                                     <div className='btn'>
                                         <a className='btn1' href='http://localhost:3000/Liked'>
                                             <div className='btn2'>
-                                                Find your next event
+                                                {t("Find your next event")}
                                             </div>
                                         </a>
                                     </div>

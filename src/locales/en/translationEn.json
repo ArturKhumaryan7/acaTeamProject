@@ -1,15 +1,9 @@
 {
     "findEvnts":"Find Events",
-    "Virtual Events": "Virtual Events",
-    "Online Webinars":"Online Webinars",
-    "Online Classes":"Online Classes",
-    "Online Yoga":"Online Yoga",
-    "Virtual Runs":"Virtual Runs",
-    "Online Zumba Classes":"Online Zumba Classes",
-    "Virtual Conferences":"Virtual Conferences",
-    "Online Seminars":"Online Seminars",
-    "Online Speed Dating":"Online Speed Dating",
-    "Virtual Wine Tasting":"Virtual Wine Tasting",
+    "Today": "Today",
+    "Online":"Online",
+    "This weekend":"This weekend",
+    "Free":"Free",
     "Connect With Us":"Connect With Us",
     "Basic Info":"Basic Info",
     "Basic Info p":"Name your event and tell event-goers why they should come.Add details that highlight what makes it unique.",
@@ -51,7 +45,24 @@
     "Please enter a number":"Please enter a number",
     "Discard":"Discard",
     "Save & Continue":"Save & Continue",
-    "validation error":"This feild is required"
+    "validation error":"This feild is required",
+    "Event Name":"Event Name",
+    "Image URL":"Image URL",
+    "All":"All",
+    "For you":"For you",
+    "Yerevan":"Yerevan",
+    "Popular in":"Popular in",
+    "Create New Event":"Create New Event",
+    "Sign In":"Sign In",
+    "Likes":"Likes",
+    "Tickets":"Tickets",
+    "Liked":"Liked",
+    "Account Settings":"Account Settings",
+    "Log Out":"Log Out",
+    "Find your next event":"Find your next event",
+    "Search Events":"Search Events",
+    "Charity & Causes":"Charity & Causes"
+
 
 
 }

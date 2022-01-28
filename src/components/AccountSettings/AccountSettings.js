@@ -8,6 +8,7 @@ import LinkedAccounts from "./LinkedAccounts/LinkedAccounts";
 import Password from "./Password/Password";
 
 
+
     function AccountSettings() {
 
         return(

@@ -3,6 +3,7 @@ import '../Styles/Tickets.css'
 import avatar from '../assets/img/user.png'
 import img from '../assets/img/svgexport-8.svg'
 import icon from '../assets/img/svgexport-8 (1).svg'
+import FooterSecond from "../components/Footer/footer"
 
 const Tickets = ({items}) => {
     return (
@@ -34,6 +35,7 @@ const Tickets = ({items}) => {
                 <a className='ticket-a' href=''><h1>Interests</h1><img className='a-img' src={icon}/> </a><hr className='hr'/>
                 <a className='ticket-a' href=''><h1>Collections</h1><img className='a-img' src={icon}/> </a><hr className='hr'/>
             </div>
+            <FooterSecond />
         </div>
 
     );

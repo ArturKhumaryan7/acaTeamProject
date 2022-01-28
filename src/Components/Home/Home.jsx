@@ -4,25 +4,21 @@ import {Route, Routes} from "react-router-dom";
 import EventPage from "../EventPage";
 import CardPage from "../CardPage";
 import { useState } from "react";
+import Footer from "../Footer/index"
+
 
 
 const Home = () => {
     return (
         <div>
             <Header/>
-            <Categories items={[
-                'For you',
-                'Online',
-                'Today',
-                'This weekend',
-                'Free',
-                'Music',
-                'Food & Drink',
-                'Charity & Causes']}/>
+            <Categories/>
             <Routes>
-            <Route path="/" element={<CardPage selectEvent/>}>
+            <Route path="/" element={<CardPage  selectEvent/>}>
             </Route>
             </Routes>
+            <Footer />
+            
            
         </div>
     );

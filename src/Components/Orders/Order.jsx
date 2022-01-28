@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Order.css"
 
+
 const Order = ({imageUrl,price,title,page,location,data}) => {
     return (
         <div className='order'>
