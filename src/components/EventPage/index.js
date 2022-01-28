@@ -1,11 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ShareIcons from "../ShareIcons"
 import styles from "./EventPage.css";
+<<<<<<< HEAD
 import TicketPurchasePage from "./TicketPurchasePag/TicketPurchasePage";
 import Modal from "react-modal"
 import i18n from "../../i18n"
 import { useTranslation } from "react-i18next";
+=======
+import EventShareButton from "../EventShareButton";
+>>>>>>> ffb0e05ae2b95be056c2af5376cb210a6fb84854
 
 function getID() {
   let idURL = window.location.pathname;
@@ -28,15 +33,24 @@ function EventPage({
   endTime,
   description,
   title,
+  likedEvents
 }) {
+ 
+  const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
+
   const [eventPageInfo, setEventPageInfo] = useState({})
   const [follow, setFollow] = useState(0);
   const [isFollow, setIsFollow] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState();
   const [listingChange, setListingChange] = useState(false);
+<<<<<<< HEAD
   const [hideTicketPurchasePage, setHideTicketPurchasePage] = useState(true)
   const { t, i18n } = useTranslation();
   const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
+=======
+  const [shareFriends, setShareFriends] = useState(false);
+
+>>>>>>> ffb0e05ae2b95be056c2af5376cb210a6fb84854
 
   useEffect(() => {
     if (name === undefined) {
@@ -65,6 +79,7 @@ function EventPage({
         })
     }
   }, [])
+<<<<<<< HEAD
 
   if(!hideTicketPurchasePage){
     document.body.style.overflowY="hidden"
@@ -72,9 +87,16 @@ function EventPage({
     document.body.style.overflowY="scroll"
   }
 
+=======
+  
+  const shareClike = () => {
+    setShareFriends(!shareFriends)
+  }
+>>>>>>> ffb0e05ae2b95be056c2af5376cb210a6fb84854
 
   const handeClike = () => {
     setIsLiked(!isLiked)
+    likedEvents(eventPageInfo)
   }
 
   const followCount = () => {
@@ -111,11 +133,12 @@ function EventPage({
 
   window.addEventListener('scroll', listingPanelChanging)
 
- const descriptionText = () => {
+  const descriptionText = () => {
      if(Array.isArray(eventPageInfo.description)){
         return eventPageInfo.description.map((item, index) => <p key={index}>{item}</p>)
      }
  }
+<<<<<<< HEAD
 
   return (
     <div className="EventPageHead">
@@ -124,6 +147,13 @@ function EventPage({
                             eventPageInfo = {eventPageInfo}
                             setIsHidden = {() => setHideTicketPurchasePage(true)}/>
       </Modal>
+=======
+ 
+
+  return (
+    <div className="EventPageHead">
+    {shareFriends ? <EventShareButton  onClick={shareClike} />: null}
+>>>>>>> ffb0e05ae2b95be056c2af5376cb210a6fb84854
       <header className="eventListingHeader clrfix">
         <div className="listingHeroImageBlurryBackground">
           <picture content={eventPageInfo.avatar}>
@@ -191,8 +221,7 @@ function EventPage({
           </div>
 
           <div className="listingPanelWrapper clrfix">
-            <div className="listingPanelStyle clrfix"></div>
-            <div className={listingChange ? "listingPanelScroll xlrfix" :"listingPanel clrfix"}>
+            <div className={listingChange ? (shareFriends ? "listingPanel clrfix": "listingPanelScroll clrfix") :"listingPanel clrfix"}>
               <div className={listingChange ? "listingPanelElementsScroll clarfix":"listingPanelElements clrfix"}>
                 <div className="listingPanelGCell">
                   <h2 className="isHiddenAccessible">
@@ -205,6 +234,7 @@ function EventPage({
                           <span className="addIconButton">
                             <button className="shareAction">
                               <img
+                                onClick={shareClike}
                                 width={30}
                                 height={30}
                                 src="/img/share.svg"
@@ -257,57 +287,7 @@ function EventPage({
                 </div>
                 <div className="shareEvenet clrfix">
                   <h3 className="shareEvenetTitle">Share with friends</h3>
-                  <div className="shareIcon">
-                    <span className="facebookIcon">
-                      <button className="facebookIconAction">
-                        <a href="https://www.facebook.com/">
-                          <img
-                            height={20}
-                            width={20}
-                            src="/img/icon/facebook.svg"
-                          />
-                        </a>
-                      </button>
-                    </span>
-                    <span className="messengerIcon">
-                      <button className="messengerIconAction">
-                        <a href="">
-                          <img
-                            height={20}
-                            width={20}
-                            src="/img/icon/messenger.svg"
-                          />
-                        </a>
-                      </button>
-                    </span>
-                    <span className="linkedinIcon">
-                      <button className="linkedinIconAction">
-                        <img
-                          height={20}
-                          width={20}
-                          src="/img/icon/linkedin.svg"
-                        />
-                      </button>
-                    </span>
-                    <span className="twitterIcon">
-                      <button className="twitterIconAction">
-                        <img
-                          height={20}
-                          width={20}
-                          src="/img/icon/twitter.svg"
-                        />
-                      </button>
-                    </span>
-                    <span className="emailIcon">
-                      <button className="emailIconAction">
-                        <img
-                          height={20}
-                          width={20}
-                          src="/img/icon/email.svg"
-                        />
-                      </button>
-                    </span>
-                  </div>
+                  <ShareIcons />
                 </div>
               </div>
 

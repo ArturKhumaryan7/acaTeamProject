@@ -4,6 +4,7 @@ import ContentLoader from "react-content-loader";
 import styles from "./Card.css";
 import {Link} from "react-router-dom";
 
+
 function Card( {
   id,
   name,
@@ -12,13 +13,17 @@ function Card( {
   location,
   endDate,
   follow,
+  likedEvents,
+  isLiked,
   loading,
   onClick,
 }) {
-const [isLiked, setIsLiked] = useState(false)
+const [isLikedState, setIsLikedState] = useState(isLiked)
+const obj = { id, name,  avatar, location, price, endDate, follow}
 
 const handeClike = () => {
-  setIsLiked(!isLiked)
+  setIsLikedState(!isLikedState)
+  likedEvents(obj)
 }
 
 
@@ -66,7 +71,7 @@ const handeClike = () => {
          </p>
       </div>
       <button className="action">
-          <img className="heart" width={25} height={25} onClick={handeClike} src={isLiked ? "/img/HeartOutline.svg":"/img/heart.svg"} />
+         <img className="heart" width={25} height={25} onClick={handeClike} src={isLikedState ? "/img/HeartOutline.svg":"/img/heart.svg"}/>
       </button>
   </div>     
      </>

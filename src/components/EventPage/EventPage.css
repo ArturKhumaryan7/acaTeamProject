@@ -7,7 +7,7 @@
 
 .eventListingHeader {
     position: absolute;
-    top: 61px;
+    top: 65px;
     width: 100%;
     z-index: -1;
     height: 66vh;
@@ -29,6 +29,7 @@
 .EventPageHead {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 .notificationBoxListing {
@@ -38,13 +39,12 @@
 
 .gGrid {
     max-width: 1080px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 .eventListingBody {
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 15%);
-    margin-top: 70px;
+    margin-top: 20px;
     position: relative;
     margin-bottom: 50px;
     padding-top: 40px;
@@ -259,18 +259,8 @@ p {
     margin: 0;
 }
 
-.listingPanelStyle {
-    width: 100%;
-    height: 66px;
-    border: none;
-    background-color: #fff;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    box-sizing: border-box;
-}
 
 .listingPanel {
-    position: absolute;
     top: 0;
     width: 100%;
     max-height: inherit;
@@ -298,14 +288,6 @@ p {
     box-sizing: border-box;
     box-shadow: 0 8px 20px -9px rgb(0 0 0 / 30%);
 }
-
-/*@media only screen and (min-width: 1080px) {
-    .listingPanel {
-        width: 1080px;
-        position: fixed;
-        left: 216px;
-    }
-}*/
 
 
 .listingPanelElements {
@@ -353,7 +335,6 @@ p {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-name: fadeInDown;
-    z-index: 1 !important;
 }
 
 .edsTooltips {
@@ -493,14 +474,13 @@ p {
     position: relative;
     background-color: #fff;
     display: flex;
-    margin-left: 8.3333333333%;
-    width: 90%;
+    width: 100%;
 }
 
 .structuredContent {
     width: 58.3333333333%;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 70px;
+    padding-right: 0;
 }
 
 .textBody {
@@ -576,24 +556,9 @@ p {
     font-weight: 400;
     text-transform: none !important;
     letter-spacing: 1px;
+    
 }
 
-.shareIcon {
-    margin-bottom: 10px;
-}
-
-.facebookIconAction, .messengerIconAction, .linkedinIconAction, .twitterIconAction, .emailIconAction {
-    border-radius: 40px;
-    height: 40px;
-    padding: 8px;
-    transition: all .4s cubic-bezier(.4,0,.3,1);
-    width: 40px;
-    color: var(--eds-ui-700,#4b4d63);
-    fill: var(--eds-ui-700,#4b4d63);
-    background: none;
-    border: none;
-    cursor: pointer;
-}
 
 button:hover {
     background-color: #dcdde2;

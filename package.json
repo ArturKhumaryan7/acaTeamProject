@@ -13,7 +13,11 @@
     "i18next": "^21.6.6",
     "react": "^17.0.2",
     "react-content-loader": "^6.1.0",
+<<<<<<< HEAD
     "react-credit-cards": "^0.8.3",
+=======
+    "react-copy-to-clipboard": "^5.0.4",
+>>>>>>> ffb0e05ae2b95be056c2af5376cb210a6fb84854
     "react-currency-input-field": "^3.6.4",
     "react-datepicker": "^4.6.0",
     "react-dom": "^17.0.2",
@@ -24,6 +28,7 @@
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-share": "^4.4.0",
     "react-time-picker": "^4.4.4",
     "react-timezone-select": "^1.1.16",
     "react-toastify": "^8.1.0",
