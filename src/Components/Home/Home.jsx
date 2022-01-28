@@ -1,12 +1,17 @@
 import Categories from "../Categories/Categories";
 import Header from "../Header/Header";
 import {Route, Routes} from "react-router-dom";
-import EventPage from "../EventPage";
 import CardPage from "../CardPage";
 import { useState } from "react";
 
 
-const Home = () => {
+const Home = ({
+    selectEvent,
+    event,
+    isLoading,
+    onAddToLiked,
+    likedEvents
+}) => {
     return (
         <div>
             <Header/>
@@ -19,10 +24,14 @@ const Home = () => {
                 'Music',
                 'Food & Drink',
                 'Charity & Causes']}/>
-            <Routes>
-            <Route path="/" element={<CardPage selectEvent/>}>
-            </Route>
-            </Routes>
+            <CardPage 
+            likedEvents={likedEvents}
+            selectEvent={selectEvent}
+            liked ={true}
+            event = {event}
+            isLoading = {isLoading}
+            onAddToLiked={onAddToLiked}
+            />
            
         </div>
     );

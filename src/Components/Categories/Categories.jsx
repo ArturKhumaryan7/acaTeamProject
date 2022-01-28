@@ -8,7 +8,7 @@ const Categories = ({items}) => {
         setActiveItem(index)
     }
     return (
-        <div>
+        <div className='searchEventWithCategorias'>
             <div className='search'>
                 <div className='search1'>Popular in </div>
                             <div className='search5'>
