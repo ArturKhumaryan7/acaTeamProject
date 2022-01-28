@@ -1,9 +1,12 @@
 import './NavBar.css';
 import { BrowserRouter, Link, Router, Routes } from "react-router-dom"
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import {useTranslation} from "react-i18next";
+import { EventContext } from "../../Contexts/EventContext";
 
     function NavBar({ hideNavBar }){
+        const {event,setEvent,filterArr,setFilterArr,allbtnRef} = useContext(EventContext)
+
         const { t } = useTranslation();
 
         const [userLogIn, setUserLogIn] = useState(!window.localStorage.getItem("isUserLogIned"))
@@ -17,14 +20,20 @@ import {useTranslation} from "react-i18next";
         let dropDownShow = () => {
             setShowDropDown(false)
         }
-
+        const onInpFilterChange = (e) =>{
+            allbtnRef.current.click()
+            if(e.target.value.length){
+                const filtered = filterArr.filter((item) => item.name.toLowerCase().includes(e.target.value.toLowerCase()));
+                setEvent(filtered)  
+            }  
+        }
 
         return(
             <div className='NavBar'>
                     <div className='NavBarItmes'>
                         <div className='titleAndSearch'>
                             <Link className='siteTitle' to="/" style={{marginLeft:"15px"}}>YourEvent</Link>
-                            <input className='searchInp' type="text" placeholder={t("Search Events")}/>
+                            <input  onChange={onInpFilterChange} className='searchInp' type="text" placeholder={t("Search Events")}/>
                             <img className="searchIcon" src="https://cdn0.iconfinder.com/data/icons/very-basic-2-android-l-lollipop-icon-pack/24/search-512.png"/>
                         </div>
                         <div className='createEvtAndSignIn'>
