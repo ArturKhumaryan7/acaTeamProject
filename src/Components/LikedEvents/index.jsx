@@ -11,7 +11,7 @@ const likedCard = JSON.parse(window.localStorage.getItem("currentUser"))
   
 return (
     <>
-        { likedCard.likes.map((obj) => 
+        { likedCard?.likes?.map((obj) => 
            <div className='liked'>
            <img className='liked-img' src={obj.avatar}/>
            <div className='liked-text'>

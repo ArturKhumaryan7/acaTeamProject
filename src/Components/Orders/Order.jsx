@@ -1,18 +1,18 @@
 import React from 'react';
 import "./Order.css"
 
-const Order = ({ eventInfo }) => {
-    console.log(eventInfo[0])
+
+const Order = ({ avatar, price, name, location, startDate, id }) => {
     return (
         <div>
-            <a className='order-name' href={"/event/" + eventInfo.id}>
+            <a className='order-name' href={"/event/" + id}>
                 <div className='order'>
-                    <img className='order-img' src={eventInfo.avatar}/>
+                    <img className='order-img' src={avatar}/>
                     <div className='order-text'>
-                        <span>{eventInfo.title}</span>
-                        <h4 className='order-data'>{eventInfo.startDate}</h4>
-                        <h4 className='order-location'>{eventInfo.location}</h4>
-                        <h4 className='order-price'>{eventInfo.price} order</h4>
+                        <span>{name}</span>
+                        <h4 className='order-data'>{startDate}</h4>
+                        <h4 className='order-location'>{location}</h4>
+                        <h4 className='order-price'>{price} order</h4>
                     </div>
                 </div>
             </a>

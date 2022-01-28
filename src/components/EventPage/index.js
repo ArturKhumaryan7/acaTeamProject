@@ -3,14 +3,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ShareIcons from "../ShareIcons"
 import styles from "./EventPage.css";
-<<<<<<< HEAD
 import TicketPurchasePage from "./TicketPurchasePag/TicketPurchasePage";
 import Modal from "react-modal"
 import i18n from "../../i18n"
 import { useTranslation } from "react-i18next";
-=======
 import EventShareButton from "../EventShareButton";
->>>>>>> ffb0e05ae2b95be056c2af5376cb210a6fb84854
+
 
 function getID() {
   let idURL = window.location.pathname;
@@ -36,21 +34,15 @@ function EventPage({
   likedEvents
 }) {
  
-  const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
-
   const [eventPageInfo, setEventPageInfo] = useState({})
   const [follow, setFollow] = useState(0);
   const [isFollow, setIsFollow] = useState(false);
   const [isLiked, setIsLiked] = useState();
   const [listingChange, setListingChange] = useState(false);
-<<<<<<< HEAD
   const [hideTicketPurchasePage, setHideTicketPurchasePage] = useState(true)
-  const { t, i18n } = useTranslation();
   const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
-=======
   const [shareFriends, setShareFriends] = useState(false);
 
->>>>>>> ffb0e05ae2b95be056c2af5376cb210a6fb84854
 
   useEffect(() => {
     if (name === undefined) {
@@ -79,7 +71,6 @@ function EventPage({
         })
     }
   }, [])
-<<<<<<< HEAD
 
   if(!hideTicketPurchasePage){
     document.body.style.overflowY="hidden"
@@ -87,12 +78,11 @@ function EventPage({
     document.body.style.overflowY="scroll"
   }
 
-=======
   
   const shareClike = () => {
     setShareFriends(!shareFriends)
   }
->>>>>>> ffb0e05ae2b95be056c2af5376cb210a6fb84854
+
 
   const handeClike = () => {
     setIsLiked(!isLiked)
@@ -138,22 +128,17 @@ function EventPage({
         return eventPageInfo.description.map((item, index) => <p key={index}>{item}</p>)
      }
  }
-<<<<<<< HEAD
 
-  return (
-    <div className="EventPageHead">
-      <Modal isOpen={!hideTicketPurchasePage} className="modal" style={{overlay:{backgroundColor:"grey", zIndex:"99999"}}}>
-        <TicketPurchasePage hideTicketPurchasePage = {hideTicketPurchasePage} 
-                            eventPageInfo = {eventPageInfo}
-                            setIsHidden = {() => setHideTicketPurchasePage(true)}/>
-      </Modal>
-=======
  
 
   return (
     <div className="EventPageHead">
+    <Modal isOpen={!hideTicketPurchasePage} className="modal" style={{overlay:{backgroundColor:"grey", zIndex:"99999"}}}>
+        <TicketPurchasePage hideTicketPurchasePage = {hideTicketPurchasePage} 
+                            eventPageInfo = {eventPageInfo}
+                            setIsHidden = {() => setHideTicketPurchasePage(true)}/>
+      </Modal>
     {shareFriends ? <EventShareButton  onClick={shareClike} />: null}
->>>>>>> ffb0e05ae2b95be056c2af5376cb210a6fb84854
       <header className="eventListingHeader clrfix">
         <div className="listingHeroImageBlurryBackground">
           <picture content={eventPageInfo.avatar}>

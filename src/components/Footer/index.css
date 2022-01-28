@@ -32,3 +32,25 @@
     background: white;
     color: black;
 }
+.main-footer button{
+    background: transparent; 
+    border: none;
+    color: white;
+    font-size: 15px;
+    text-align: left;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+.main-footer button:hover{
+    color: blue;
+}
+.main-footer-btns{
+    display: flex;
+    flex-direction: column;
+}
+/* second footer styles */
+.main-footer-contactInfo{
+    display: flex;
+    justify-content: space-between;
+    width: 418px;
+}
