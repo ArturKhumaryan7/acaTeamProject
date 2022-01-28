@@ -1,24 +1,33 @@
 import Categories from "../Categories/Categories";
 import Header from "../Header/Header";
 import {Route, Routes} from "react-router-dom";
-import EventPage from "../EventPage";
 import CardPage from "../CardPage";
 import { useState } from "react";
 import Footer from "../Footer/index"
 
 
 
-const Home = () => {
+const Home = ({
+    selectEvent,
+    event,
+    isLoading,
+    onAddToLiked,
+    likedEvents
+}) => {
     return (
         <div>
             <Header/>
             <Categories/>
-            <Routes>
-            <Route path="/" element={<CardPage  selectEvent/>}>
-            </Route>
-            </Routes>
+            <CardPage 
+            likedEvents={likedEvents}
+            selectEvent={selectEvent}
+            liked ={true}
+            event = {event}
+            isLoading = {isLoading}
+            onAddToLiked={onAddToLiked}
+            />
             <Footer />
-            
+
            
         </div>
     );

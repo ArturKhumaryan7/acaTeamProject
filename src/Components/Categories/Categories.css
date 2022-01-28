@@ -1,4 +1,9 @@
 
+.searchEventWithCategorias {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
 .search{
     -webkit-text-size-adjust: 100%;
     font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;

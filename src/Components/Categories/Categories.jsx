@@ -15,7 +15,7 @@ const Categories = () => {
         handleFilterClick(e)  
     }
     return (
-        <div>
+        <div className='searchEventWithCategorias'>
             <div className='search'>
                 <div className='search1'>{t("Popular in")} </div>
                             <div className='search5'>

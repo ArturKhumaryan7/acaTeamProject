@@ -1,0 +1,58 @@
+.liked{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 60px;
+    padding-top: 0px;
+    transition: box-shadow .3s;
+    border-radius:10px;
+    border: 1px solid white;
+    background: #fff;
+    width: 70%;
+    margin-left: 50px;
+}
+
+.liked:hover{
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.liked-img{
+    height: 180px;
+    margin: 20px 50px 20px 30px;
+}
+
+.liked-text{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.liked-name{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bolder;
+    color: black;
+    margin-bottom: auto;
+    padding: 0;
+}
+
+.liked-data{
+    margin: 0;
+    padding: 0;
+    color: #bd4f4f;
+    font-weight: initial;
+}
+
+.liked-location{
+    margin: 0;
+    padding: 0;
+    color: #6f7287;
+    font-weight: initial;
+}
+
+.liked-price{
+    margin: 0;
+    padding: 0;
+    font-weight: initial;
+    color: #6f7287;
+    margin-bottom: auto;
+}

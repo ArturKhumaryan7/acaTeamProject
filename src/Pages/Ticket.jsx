@@ -3,7 +3,6 @@ import Order from "../components/Orders/Order"
 import '../Styles/Tickets.css'
 import avatar from '../assets/img/user.png'
 import icon from '../assets/img/svgexport-8 (1).svg'
-import '../components/LikedEvents/LikedItems/LikedItems.css'
 import '../components/Orders/Order.css'
 
 
