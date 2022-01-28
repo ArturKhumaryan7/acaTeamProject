@@ -11,9 +11,7 @@ import Password from "./components/AccountSettings/Password/Password";
 import LogIn from "./components/LogIn/LogIn";
 import NavBar from "./components/NavBar/NavBar";
 import Liked from "./components/LikedEvents/Liked";
-import Tickets from "./Pages/Tickets";
 import Ticket from './Pages/Ticket';
-import axios from "axios";
 import Home from "./components/Home/Home";
 import CreateEvent from "./components/CreateEvent";
 
@@ -24,18 +22,6 @@ import CreateEvent from "./components/CreateEvent";
     const [orders, setOrders] = useState([]);
     const [events, setEvents] = useState([]);
 
-
-    useEffect(()=>{
-        axios.get('https://61e2a20e3050a10017682205.mockapi.io/events')
-        .then(({data})=>{
-            setOrders(data);
-        })
-
-        axios.get('https://61e2a20e3050a10017682205.mockapi.io/events')
-        .then(({data})=>{
-            setEvents(data);
-        })
-    },[])
 
 
     return (
@@ -53,8 +39,7 @@ import CreateEvent from "./components/CreateEvent";
             <Route path="event/:id" element={<EventPage />} />
             <Route path="/createEvent" element = { <CreateEvent />}/>
             <Route path="/likedEvents" element={<Liked items={events}/>} exact />
-            <Route path="/Tickets" element={<Tickets/>}/>
-            <Route path="/T" element={<Ticket items={events} items2={orders} />}/>
+            <Route path="/Tickets" element={<Ticket items={events}/>}/>
             <Route path="/" element={<Home />}/>
           </Routes>
 

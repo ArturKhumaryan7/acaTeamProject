@@ -1,0 +1,47 @@
+.TitleAndDate{
+    margin: auto;
+    width: 60%;
+    text-align: center;
+}
+
+.amountOfTickets{
+    height: 50px;
+    width: 60px;
+}
+
+.ticketsAndDonation{
+    margin-left: 180px;
+    width: 80%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.amountOfDonation{
+    height: 50px;
+    width: 60px;
+}
+
+.amountOfDonation::-webkit-outer-spin-button,
+.amountOfDonation::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.amountOfDonation {
+  -moz-appearance: textfield;
+}
+
+.ticketCheckoutBtn{
+    margin-top: 20px;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+    border:1px solid gray;
+    background-color: #0D8547;
+}
+
+.ticketCheckoutBtn:hover{
+    cursor: pointer;
+    background-color: #1b8a50;
+}
