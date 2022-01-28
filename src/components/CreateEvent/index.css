@@ -176,6 +176,7 @@
     background-color: white;
     margin-right: 20px;
     border:1px solid grey;
+    cursor: pointer;
     
 }
 .createEvent-btnSave{
@@ -184,5 +185,6 @@
     background-color: #D1410CFF;
     border:1px solid #D1410CFF;
     color: white;
+    cursor: pointer;
 }
 

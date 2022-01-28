@@ -1,0 +1,95 @@
+.TicketPurchasePage{
+    height: 550px;
+    width: 1200px;
+    position: absolute;
+    z-index: 99999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    display: flex;
+    margin-top: 20px;
+}
+
+.purchaseIsDoneModal{
+    height: 230px;
+    width: 230px;
+    border: 1px solid white;
+    margin: auto;
+    margin-top: 200px;
+    box-shadow: 10px 10px 8px 10px gray;
+    background-color: white;
+    border-radius: 10%;
+}
+
+
+.successfulPaymentAnimation{
+    height: 150px;
+    width: 100%;
+    border-radius: 10%;
+    margin-right: 30px;
+}
+
+.TicketPuchaseImg{
+    height: 200px;
+    width: 300px;
+}
+
+.closeTicketPurchasePaseBtn{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border: 1px solid white;
+    border-radius: 50%;
+    opacity: 0.5;
+    margin-left: 260px;
+    cursor: pointer;
+}
+
+.TitleAndDate{
+    margin: auto;
+    width: 60%;
+    text-align: center;
+}
+
+.amountOfTickets{
+    height: 50px;
+    width: 60px;
+}
+
+.ticketsAndDonation{
+    margin-left: 180px;
+    width: 80%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.amountOfDonation{
+    height: 50px;
+    width: 60px;
+}
+
+.amountOfDonation::-webkit-outer-spin-button,
+.amountOfDonation::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.amountOfDonation {
+  -moz-appearance: textfield;
+}
+
+.ticketCheckoutBtn{
+    margin-top: 20px;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+    border:1px solid gray;
+    background-color: #0D8547;
+}
+
+.ticketCheckoutBtn:hover{
+    cursor: pointer;
+    background-color: #1b8a50;
+}

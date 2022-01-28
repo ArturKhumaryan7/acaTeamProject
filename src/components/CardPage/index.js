@@ -10,7 +10,7 @@ import { getAdditionalUserInfo } from "firebase/auth";
 
 
 
-function CardPage({ selectEvent,event, isLoading, likedEvents}) {
+function CardPage({ selectEvent, event, isLoading, likedEvents}) {
   const [eventCount, setEventCount] = useState(8);
   // const {setEvent,setFilterArr} = useContext(EventContext)
 
@@ -25,7 +25,7 @@ function CardPage({ selectEvent,event, isLoading, likedEvents}) {
   //   eventCardData();
   // }, []);
 
-  const lessEvent = event.slice(0, eventCount);
+  const lessEvent = event?.slice(0, eventCount);
 
   const onClickShowMor =  () => {
    setEventCount(eventCount + 4)
@@ -43,7 +43,7 @@ function CardPage({ selectEvent,event, isLoading, likedEvents}) {
     return isLoading
       ? arr
           
-      : lessEvent.map((obj, index) => (
+      : lessEvent?.map((obj, index) => (
 
             <Card
               isLiked = {userInfo?.likes?.map((item) => item.id ).includes(obj.id)}

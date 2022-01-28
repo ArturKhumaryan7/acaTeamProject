@@ -3,7 +3,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ShareIcons from "../ShareIcons"
 import styles from "./EventPage.css";
+import TicketPurchasePage from "./TicketPurchasePag/TicketPurchasePage";
+import Modal from "react-modal"
+import i18n from "../../i18n"
+import { useTranslation } from "react-i18next";
 import EventShareButton from "../EventShareButton";
+
 
 function getID() {
   let idURL = window.location.pathname;
@@ -29,13 +34,13 @@ function EventPage({
   likedEvents
 }) {
  
-  const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
-
   const [eventPageInfo, setEventPageInfo] = useState({})
   const [follow, setFollow] = useState(0);
   const [isFollow, setIsFollow] = useState(false);
   const [isLiked, setIsLiked] = useState();
   const [listingChange, setListingChange] = useState(false);
+  const [hideTicketPurchasePage, setHideTicketPurchasePage] = useState(true)
+  const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
   const [shareFriends, setShareFriends] = useState(false);
 
 
@@ -66,10 +71,18 @@ function EventPage({
         })
     }
   }, [])
+
+  if(!hideTicketPurchasePage){
+    document.body.style.overflowY="hidden"
+  } else {
+    document.body.style.overflowY="scroll"
+  }
+
   
   const shareClike = () => {
     setShareFriends(!shareFriends)
   }
+
 
   const handeClike = () => {
     setIsLiked(!isLiked)
@@ -77,9 +90,27 @@ function EventPage({
   }
 
   const followCount = () => {
+
+    
     setIsFollow(!isFollow);
 
     (isFollow ? setFollow(follow - 1): setFollow(follow + 1));
+
+    if(!isFollow){
+      userInfo.followings++;
+    } else {
+      userInfo.followings--;
+    }
+
+    fetch(`https://61e6cdffce3a2d001735944d.mockapi.io/users/${userInfo.id}`, {
+                    method:"put",
+                    headers: {
+                        "content-type":"application/json"
+                    },
+                    body:JSON.stringify(userInfo)
+                }).then(res => {
+                    window.localStorage.setItem("currentUser", JSON.stringify(userInfo))
+                })
   };
 
   const listingPanelChanging = () => {
@@ -94,13 +125,19 @@ function EventPage({
 
   const descriptionText = () => {
      if(Array.isArray(eventPageInfo.description)){
-        return eventPageInfo.description.map((item) => <p>{item}</p>)
+        return eventPageInfo.description.map((item, index) => <p key={index}>{item}</p>)
      }
  }
+
  
 
   return (
     <div className="EventPageHead">
+    <Modal isOpen={!hideTicketPurchasePage} className="modal" style={{overlay:{backgroundColor:"grey", zIndex:"99999"}}}>
+        <TicketPurchasePage hideTicketPurchasePage = {hideTicketPurchasePage} 
+                            eventPageInfo = {eventPageInfo}
+                            setIsHidden = {() => setHideTicketPurchasePage(true)}/>
+      </Modal>
     {shareFriends ? <EventShareButton  onClick={shareClike} />: null}
       <header className="eventListingHeader clrfix">
         <div className="listingHeroImageBlurryBackground">
@@ -114,7 +151,7 @@ function EventPage({
           </picture>
         </div>
       </header>
-
+      {}
       <div className="gGrid">
         <div className="eventListingBody">
           <div className="listingHeroDetailsMainContaine">
@@ -211,7 +248,7 @@ function EventPage({
                   </div>
                 </div>
                 <div className="registerButton">
-                  <button className="registerAction">Tickets</button>
+                  <button className="registerAction" onClick={() => setHideTicketPurchasePage(false)}>Order</button>
                 </div>
               </div>
             </div>

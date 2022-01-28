@@ -9,14 +9,13 @@ import DeleteAccount from "./components/AccountSettings/DeleteAccount/DeleteAcco
 import LinkedAccounts from "./components/AccountSettings/LinkedAccounts/LinkedAccounts";
 import Password from "./components/AccountSettings/Password/Password";
 import LogIn from "./components/LogIn/LogIn";
-import NavBar from "./components/NavBar/NavBar";
+import NavBar from "./components/NavBar/NavBar"
 import LikedEvents from "./components/LikedEvents";
-import Tickets from "./Pages/Tickets";
 import Ticket from './Pages/Ticket';
-import axios from "axios";
 import Home from "./components/Home/Home";
 import CreateEvent from "./components/CreateEvent";
 import {EventContext} from "./Contexts/EventContext"
+import axios from "axios"
 import i18n from "./i18n";
 import { useTranslation } from "react-i18next";
 
@@ -26,7 +25,6 @@ import { useTranslation } from "react-i18next";
     const [hideNavBar, setHideNavBar] = useState(false)
     const [isLoading, setIsLoading] = useState(true);
     const [curentEvent, setCurentEvent] = useState(undefined);
-  
     const [event, setEvent] = useState([]);
     const [filterArr,setFilterArr] = useState([]);
     const filterRef = useRef();
@@ -89,6 +87,7 @@ import { useTranslation } from "react-i18next";
     
 
 
+
     useEffect(() => {
       async function eventCardData() {
         const cardInfo = await axios.get(
@@ -142,9 +141,8 @@ import { useTranslation } from "react-i18next";
             likedEvents={likedEvents}
             {...curentEvent} />}/>
             <Route path="/createEvent" element = { <CreateEvent />}/>
+            <Route path="/Tickets" element={<Ticket items={event}/>}/>
             <Route path="/likedEvents" element={<LikedEvents />} exact />
-            <Route path="/Tickets" element={<Tickets/>}/>
-            <Route path="/T" element={<Ticket />}/>
             <Route path="/" element={<Home
             likedEvents={likedEvents}
             selectEvent={setCurentEvent} 
