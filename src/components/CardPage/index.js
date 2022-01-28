@@ -28,7 +28,7 @@ function CardPage({ selectEvent, event, isLoading, likedEvents}) {
       ? arr
       : lessEvent.map((obj, index) => (
             <Card
-              isLiked = {userInfo.likes.map((item) => item.id ).includes(obj.id)}
+              isLiked = {userInfo?.likes?.map((item) => item.id ).includes(obj.id)}
               likedEvents={likedEvents}
               onClick={() => {
                 selectEvent(obj);
