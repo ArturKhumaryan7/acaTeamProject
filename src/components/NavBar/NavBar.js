@@ -26,7 +26,7 @@ import { useState } from 'react';
                             <img className="searchIcon" src="https://cdn0.iconfinder.com/data/icons/very-basic-2-android-l-lollipop-icon-pack/24/search-512.png"/>
                         </div>
                         <div className='createEvtAndSignIn'>
-                            {   (userLogIn || userInfo.status === "admin") && <Link className='createEvtBtn' to={userLogIn ? "/logIn": userInfo.status === "admin" ? "/createEvent": ""}><p className='NavBarBtnContent'>Create New Event</p></Link>}
+                            {   (userLogIn || userInfo.status === "admin") && <Link className='createEvtBtn' to={userLogIn ? "/logIn": userInfo.status === "admin" ? "/createEvent": ""} onClick={() => hideNavBar(window.localStorage.getItem("isUserLogIned")?false:true)}><p className='NavBarBtnContent'>Create New Event</p></Link>}
                                 {userLogIn && <Link className='signInBtn' to='/logIn' onClick={() => hideNavBar(true)}><p className='NavBarBtnContent'>Sign In</p></Link>}
                             {   !userLogIn &&  
                                             <Link className='likesLink' to="/likedEvents">

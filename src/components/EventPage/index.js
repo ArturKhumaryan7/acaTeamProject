@@ -2,6 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./EventPage.css";
+import TicketPurchasePage from "./TicketPurchasePag/TicketPurchasePage";
+import Modal from "react-modal"
+import i18n from "../../i18n"
+import { useTranslation } from "react-i18next";
 
 function getID() {
   let idURL = window.location.pathname;
@@ -30,6 +34,9 @@ function EventPage({
   const [isFollow, setIsFollow] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [listingChange, setListingChange] = useState(false);
+  const [hideTicketPurchasePage, setHideTicketPurchasePage] = useState(true)
+  const { t, i18n } = useTranslation();
+  const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
 
   useEffect(() => {
     if (name === undefined) {
@@ -59,15 +66,39 @@ function EventPage({
     }
   }, [])
 
+  if(!hideTicketPurchasePage){
+    document.body.style.overflowY="hidden"
+  } else {
+    document.body.style.overflowY="scroll"
+  }
+
 
   const handeClike = () => {
     setIsLiked(!isLiked)
   }
 
   const followCount = () => {
+
+    
     setIsFollow(!isFollow);
 
     (isFollow ? setFollow(follow - 1): setFollow(follow + 1));
+
+    if(!isFollow){
+      userInfo.followings++;
+    } else {
+      userInfo.followings--;
+    }
+
+    fetch(`https://61e6cdffce3a2d001735944d.mockapi.io/users/${userInfo.id}`, {
+                    method:"put",
+                    headers: {
+                        "content-type":"application/json"
+                    },
+                    body:JSON.stringify(userInfo)
+                }).then(res => {
+                    window.localStorage.setItem("currentUser", JSON.stringify(userInfo))
+                })
   };
 
   const listingPanelChanging = () => {
@@ -82,13 +113,17 @@ function EventPage({
 
  const descriptionText = () => {
      if(Array.isArray(eventPageInfo.description)){
-        return eventPageInfo.description.map((item) => <p>{item}</p>)
+        return eventPageInfo.description.map((item, index) => <p key={index}>{item}</p>)
      }
  }
- console.log(descriptionText())
 
   return (
     <div className="EventPageHead">
+      <Modal isOpen={!hideTicketPurchasePage} className="modal" style={{overlay:{backgroundColor:"grey", zIndex:"99999"}}}>
+        <TicketPurchasePage hideTicketPurchasePage = {hideTicketPurchasePage} 
+                            eventPageInfo = {eventPageInfo}
+                            setIsHidden = {() => setHideTicketPurchasePage(true)}/>
+      </Modal>
       <header className="eventListingHeader clrfix">
         <div className="listingHeroImageBlurryBackground">
           <picture content={eventPageInfo.avatar}>
@@ -101,7 +136,7 @@ function EventPage({
           </picture>
         </div>
       </header>
-
+      {}
       <div className="gGrid">
         <div className="eventListingBody">
           <div className="listingHeroDetailsMainContaine">
@@ -198,7 +233,7 @@ function EventPage({
                   </div>
                 </div>
                 <div className="registerButton">
-                  <button className="registerAction">Tickets</button>
+                  <button className="registerAction" onClick={() => setHideTicketPurchasePage(false)}>Order</button>
                 </div>
               </div>
             </div>

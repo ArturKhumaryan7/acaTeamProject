@@ -1,0 +1,82 @@
+.PaymentTitleAndTime{
+    margin: auto;
+    width: 60%;
+    text-align: center;
+    height: 93px;
+}
+
+.contactInfoAndPayment{
+    margin-left: 180px;
+    width: 80%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.ticketCheckoutBtn{
+    margin-top: 20px;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+    border:1px solid gray;
+    background-color: #0D8547;
+    margin-left: 10px;
+}
+
+.checkoutEmailAddress{
+    width: 98%;
+    height: 35px;
+    margin-top: -20px;
+}
+
+
+.checkoutNameSurname{
+    height: 35px;
+    width: 200px;
+    margin-top: -20px;
+}
+
+.bandCardDiv{
+    width: 400px;
+    height: 60px;
+    border: 1px solid gainsboro;
+}
+
+.bankCardRadiobox{
+    height: 20px;
+    width: 20px;
+}
+
+.paypalDiv{
+    width: 400px;
+    height: 60px;
+    border: 1px solid gainsboro;
+}
+
+.paypalRadioBox{
+    height: 20px;
+    width: 20px;
+}
+
+.cardNumber{
+    height: 35px;
+    width: 150px;
+}
+
+.cardName{
+    height: 35px;
+    width: 150px;
+    margin-top: 10px;
+}
+
+.cardExpiry{
+    height: 35px;
+    width: 150px;
+    margin-top: 10px;
+}
+
+.cardCvc{
+    height: 35px;
+    width: 70px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
