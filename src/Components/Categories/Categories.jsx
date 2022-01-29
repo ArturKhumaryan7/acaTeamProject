@@ -7,13 +7,22 @@ import {useTranslation} from "react-i18next";
 const Categories = () => {
     const { t } = useTranslation();
 
-    const {weekendbtnRef,freebtnRef,foodbtnRef,charitybtnRef,musicbtnRef,todaybtnRef,onlinebtnRef,allbtnRef,handleFilterClick,filterRef} = useContext(EventContext)
+    const {weekendbtnRef,freebtnRef,foodbtnRef,charitybtnRef,musicbtnRef,todaybtnRef,onlinebtnRef,allbtnRef,handleFilterClick,filterRef,event,setEvent,filterArr,setFilterArr} = useContext(EventContext)
 
     const [activeItem,setActiveItem] = useState(null)
     const onSelectItem = (id,e)=>{
         setActiveItem(id)
         handleFilterClick(e)  
     }
+
+    const onInpFilterChangeLoc = (e) =>{
+        allbtnRef.current.click()
+        if(e.target.value.length){
+            const filtered = filterArr.filter((item) => item.location.toLowerCase().includes(e.target.value.toLowerCase()));
+            setEvent(filtered)  
+        }  
+    }
+
     return (
         <div className='searchEventWithCategorias'>
             <div className='search'>
@@ -23,7 +32,7 @@ const Categories = () => {
                                                 <img src={image} />
                                         </span>
                                 <div className='search6' >
-                                    <input  className='input' type="text" placeholder={t("Yerevan")}/>
+                                    <input  className='input' type="text" onChange={onInpFilterChangeLoc}  placeholder={t("City")}/>
                                 </div>
                             </div>
 
