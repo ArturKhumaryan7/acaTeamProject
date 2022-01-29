@@ -90,8 +90,42 @@ import { useTranslation } from "react-i18next";
         setIsLoading(false);
         setFilterArr(cardInfo.data)
         setEvent(cardInfo.data);
+
+        const date = new Date();
+        const [currentMonth, currentDay, currentYear] = [date.getMonth() + 1, date.getDate(), date.getFullYear()];
+        let eventDay;
+        let eventMonth;
+        let eventYear;
+        let isDelete = false
+
+        cardInfo.data.map((elem, index) => {
+          [eventMonth, eventDay, eventYear] = elem.endDate.split("/")
+
+          if(eventMonth[0] == "0"){
+            eventMonth = eventMonth[1]
+          }
+
+          if(eventYear < currentYear){
+            isDelete = true
+          } else if(eventYear == currentYear){
+            if(eventMonth < currentMonth){
+              isDelete = true
+            } else if(eventMonth == currentMonth){
+              if(eventDay < currentDay){
+                isDelete = true
+              }
+            }
+          }
+
+          if(isDelete){
+            fetch(`https://61e2a20e3050a10017682205.mockapi.io/newEvent/${elem.id}`, {method:"delete"})
+          }
+        })
       }
       eventCardData();
+
+      
+
     }, []);
       
 
@@ -115,6 +149,7 @@ import { useTranslation } from "react-i18next";
         window.localStorage.setItem("currentUser", JSON.stringify(userInfo))
     })
     }
+    
     
     return (
       <div className="App">

@@ -35,8 +35,8 @@ function EventPage({
 }) {
  
   const [eventPageInfo, setEventPageInfo] = useState({})
-  const [follow, setFollow] = useState(0);
-  const [isFollow, setIsFollow] = useState(false);
+  let [follow, setFollow] = useState(0);
+  let [isFollow, setIsFollow] = useState(false);
   const [isLiked, setIsLiked] = useState();
   const [listingChange, setListingChange] = useState(false);
   const [hideTicketPurchasePage, setHideTicketPurchasePage] = useState(true)
@@ -70,7 +70,10 @@ function EventPage({
             title,
         })
     }
+
+
   }, [])
+
 
   if(!hideTicketPurchasePage){
     document.body.style.overflowY="hidden"
@@ -96,11 +99,14 @@ function EventPage({
 
     (isFollow ? setFollow(follow - 1): setFollow(follow + 1));
 
-    if(!isFollow){
-      userInfo.followings++;
-    } else {
-      userInfo.followings--;
-    }
+    // if(!isFollow){
+    //   // userInfo.followings.push(eventPageInfo.id)
+      
+    // } else {
+    //   // userInfo.followings = userInfo.followings.filter(e => e !== eventPageInfo.id);
+    // }
+
+
 
     fetch(`https://61e6cdffce3a2d001735944d.mockapi.io/users/${userInfo.id}`, {
                     method:"put",
@@ -129,7 +135,15 @@ function EventPage({
      }
  }
 
- 
+//   if(eventPageInfo.id != undefined){
+//     console.log(userInfo.followings, eventPageInfo.id)
+//     isFollow = userInfo?.followings?.some(elem => elem === eventPageInfo.id)
+//     if(isFollow){
+//       follow = 1
+//     }
+// }
+
+
 
   return (
     <div className="EventPageHead">
