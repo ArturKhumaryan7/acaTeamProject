@@ -7,7 +7,7 @@ import {useTranslation} from "react-i18next";
 const Categories = () => {
     const { t } = useTranslation();
 
-    const {handleFilterClick,filterRef} = useContext(EventContext)
+    const {weekendbtnRef,freebtnRef,foodbtnRef,charitybtnRef,musicbtnRef,todaybtnRef,onlinebtnRef,allbtnRef,handleFilterClick,filterRef} = useContext(EventContext)
 
     const [activeItem,setActiveItem] = useState(null)
     const onSelectItem = (id,e)=>{
@@ -32,6 +32,7 @@ const Categories = () => {
                 <ul className='ul'>
                     <li className='li'>
                         <button
+                            ref = {allbtnRef}
                             value='All'
                             onClick={(e)=>onSelectItem(null,e)}
                             className={activeItem===null?'active':'passive'}>
@@ -41,6 +42,7 @@ const Categories = () => {
                      
                     <li className='li'> 
                         <button
+                            ref = {onlinebtnRef}
                             value="Online event"
                             id="btnOnline"
                             onClick={(e)=>onSelectItem("btnOnline",e)}
@@ -50,6 +52,7 @@ const Categories = () => {
                     </li>
                     <li className='li'> 
                         <button 
+                            ref = {todaybtnRef}
                             value="Today"
                             id="btnToday"
                             onClick={(e)=>onSelectItem("btnToday",e)}
@@ -59,6 +62,7 @@ const Categories = () => {
                     </li>
                     <li className='li'> 
                         <button 
+                            ref = {weekendbtnRef}
                             value="This weekend"
                             id="btnWeekend"
                             onClick={(e)=>onSelectItem("btnWeekend",e)}
@@ -68,6 +72,7 @@ const Categories = () => {
                     </li>    
                     <li className='li'> 
                         <button 
+                            ref = {freebtnRef}
                             value='Free'
                             id="btnFree"
                             onClick={(e)=>onSelectItem("btnFree",e)}
@@ -77,6 +82,7 @@ const Categories = () => {
                     </li>    
                     <li className='li'>     
                         <button 
+                            ref = {musicbtnRef}
                             value="Music"
                             id="btnMusic"
                             onClick={(e)=>onSelectItem("btnMusic",e)}
@@ -86,6 +92,7 @@ const Categories = () => {
                     </li>    
                     <li className='li'>    
                         <button 
+                            ref = {foodbtnRef}
                             value="Food and Drink"
                             id="btnFood"
                             onClick={(e)=>onSelectItem("btnFood",e)}
@@ -95,6 +102,7 @@ const Categories = () => {
                     </li>
                     <li className='li'>    
                         <button 
+                            ref = {charitybtnRef}
                             value="Charity & Causes"
                             id="btnCharity"
                             onClick={(e)=>onSelectItem("btnCharity",e)}

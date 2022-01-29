@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./index.css";
 import i18n from "../../i18n"
 import { useTranslation } from "react-i18next";
@@ -9,6 +9,7 @@ function FooterSecond() {
     const changeLanguage = (e) => {
         i18n.changeLanguage(e.target.value);
     };
+    
   return(
     <footer className="main-footer">
             <div className="main-footer-size">
@@ -23,7 +24,7 @@ function FooterSecond() {
                         <p><a href="https://instagram.com" target="_blank">Instagram</a></p>
                     </section>
                     <section className="main-footer-select">
-                        <select name="main-footer-language" onChange={(e) => changeLanguage(e)}>
+                        <select name="main-footer-language" onChange={changeLanguage}>
                             <option value="en">English</option>
                             <option value="hy">Armenian</option>
                         </select>

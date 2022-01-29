@@ -1,3 +1,14 @@
+.likesStyle {
+    font-size: 3.25rem;
+    line-height: 4rem;
+    flex: 1 1 auto;
+    -webkit-box-flex: 1;
+    letter-spacing: 1px;
+    font-weight: 800;
+    color: var(--eds-ui-900,#1e0a3c);
+    margin-left: 100px;
+}
+
 .liked{
     display: flex;
     flex-direction: row;

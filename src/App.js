@@ -28,6 +28,14 @@ import { useTranslation } from "react-i18next";
     const [event, setEvent] = useState([]);
     const [filterArr,setFilterArr] = useState([]);
     const filterRef = useRef();
+    const allbtnRef = useRef();
+    const onlinebtnRef = useRef();
+    const freebtnRef = useRef();
+    const foodbtnRef = useRef();
+    const todaybtnRef = useRef();
+    const charitybtnRef = useRef();
+    const musicbtnRef = useRef();
+    const weekendbtnRef = useRef()
 
     function handleFilterClick(e){
        
@@ -76,7 +84,6 @@ import { useTranslation } from "react-i18next";
     
   }
 
-    
     
 
 
@@ -153,8 +160,9 @@ import { useTranslation } from "react-i18next";
     
     return (
       <div className="App">
+      <EventContext.Provider value={{weekendbtnRef,freebtnRef,foodbtnRef,charitybtnRef,musicbtnRef,todaybtnRef,onlinebtnRef,allbtnRef,filterArr,setFilterArr,handleFilterClick,event,setEvent,setFilterArr,filterRef}}>
           { !hideNavBar && window.location.href !== "http://localhost:3000/logIn" && <NavBar hideNavBar={(status) => setHideNavBar(status)}/>}
-          <EventContext.Provider value={{handleFilterClick,event,setEvent,setFilterArr,filterRef}}>
+          
           <Routes>
             <Route path="/logIn/*" element={<LogIn />} hideNavBar={(status) => setHideNavBar(status)}/> 
             <Route  path="/account-settings" element={<AccountSettings />}>
@@ -178,7 +186,6 @@ import { useTranslation } from "react-i18next";
             />}/>
           </Routes>
 
-            {/* <Footer /> */}
           </EventContext.Provider>
       </div>
     );

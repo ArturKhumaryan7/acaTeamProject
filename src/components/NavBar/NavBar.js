@@ -1,9 +1,12 @@
 import './NavBar.css';
 import { BrowserRouter, Link, Router, Routes } from "react-router-dom"
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import {useTranslation} from "react-i18next";
+import { EventContext } from "../../Contexts/EventContext";
 
     function NavBar({ hideNavBar }){
+        const {event,setEvent,filterArr,setFilterArr,allbtnRef} = useContext(EventContext)
+
         const { t } = useTranslation();
 
         const [userLogIn, setUserLogIn] = useState(!window.localStorage.getItem("isUserLogIned"))
@@ -17,14 +20,20 @@ import {useTranslation} from "react-i18next";
         let dropDownShow = () => {
             setShowDropDown(false)
         }
-
+        const onInpFilterChange = (e) =>{
+            allbtnRef.current.click()
+            if(e.target.value.length){
+                const filtered = filterArr.filter((item) => item.name.toLowerCase().includes(e.target.value.toLowerCase()));
+                setEvent(filtered)  
+            }  
+        }
 
         return(
             <div className='NavBar'>
                     <div className='NavBarItmes'>
                         <div className='titleAndSearch'>
                             <Link className='siteTitle' to="/" style={{marginLeft:"15px"}}>YourEvent</Link>
-                            <input className='searchInp' type="text" placeholder={t("Search Events")}/>
+                            <input  onChange={onInpFilterChange} className='searchInp' type="text" placeholder={t("Search Events")}/>
                             <img className="searchIcon" src="https://cdn0.iconfinder.com/data/icons/very-basic-2-android-l-lollipop-icon-pack/24/search-512.png"/>
                         </div>
                         <div className='createEvtAndSignIn'>
@@ -42,7 +51,7 @@ import {useTranslation} from "react-i18next";
                                             <p className='tickets'>{t("Tickets")}</p>
                                         </Link>}
                             {   !userLogIn && 
-                                <div style={{display:"flex", flexDirection:"column", justifyContent:"end" ,marginBottom:"-219px"}} hidden= {true}>
+                                <div style={{display:"flex", zIndex: "50", flexDirection:"column", justifyContent:"end" ,marginBottom:"-219px"}} hidden= {true}>
                                     <div className='userAccDropDown' onMouseOver={dropDownShow} onMouseOut={dropDownHide}>
                                         <img className='accIcon' src={userInfo.profilePicture === ""?"https://cdn4.iconfinder.com/data/icons/e-commerce-181/512/477_profile__avatar__man_-512.png":userInfo.profilePicture}/>
                                         <p className='NavBarBtnContent'>{userInfo.email}</p>

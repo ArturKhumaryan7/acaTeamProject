@@ -7,21 +7,46 @@ import { EventContext } from "../../Contexts/EventContext";
 
 const Footer = () => {
     const { t, i18n } = useTranslation();
-
+    
+    const {weekendbtnRef,freebtnRef,foodbtnRef,charitybtnRef,musicbtnRef,todaybtnRef,filterRef,onlinebtnRef,allbtnRef} = useContext(EventContext)
+ 
     const changeLanguage = (e) => {
-        console.log(e.target.value,"language target value")
         i18n.changeLanguage(e.target.value);
     };
-    
-    const {handleFilterClick,filterRef} = useContext(EventContext)
- 
-    const handleBtnClick = (e) =>{
 
+    const handleBtnClick = (e) =>{
+        const val = e.target.value;
         window.scrollTo({
             top: filterRef.current.offsetTop,
             behavior: "smooth"
         });
-        handleFilterClick(e)      
+        switch(val){
+            case "All":
+                allbtnRef.current.click()
+              break;
+            case "Free":
+                freebtnRef.current.click()
+              break; 
+            case "Online event":
+                onlinebtnRef.current.click()
+              break;
+            case "Music":  
+                musicbtnRef.current.click()
+              break;
+            case "Food and Drink":
+                foodbtnRef.current.click()
+              break;
+            case "Today":  
+                todaybtnRef.current.click()
+              break;
+            case "This weekend":
+                weekendbtnRef.current.click()
+              break;
+              case "Charity & Causes":  
+                charitybtnRef.current.click()
+              break;
+            default:  
+          }
         
     }
    
