@@ -1,6 +1,7 @@
 .LinkedAccounts{
-    position: absolute;
+    position: relative;
     margin-top: -330px;
     margin-left: 400px;
-    width: 65%;
+    width: 800px;
+    height: 350px;
 }

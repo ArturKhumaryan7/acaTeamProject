@@ -1,20 +1,29 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
+import { Link } from "react-router-dom";
 import Card from "../Card";
 import axios from "axios";
 import styels from "./CardPage.css"
+import {EventContext} from "../../Contexts/EventContext"
 import { getAdditionalUserInfo } from "firebase/auth";
+
+
 
 
 function CardPage({ selectEvent, event, isLoading, likedEvents}) {
   const [eventCount, setEventCount] = useState(8);
 
-
-  const lessEvent = event.slice(0, eventCount);
+  const lessEvent = event?.slice(0, eventCount);
 
   const onClickShowMor =  () => {
    setEventCount(eventCount + 4)
  };
+
+ const onClickShowLes =  () => {
+  setEventCount(eventCount - 4)
+};
+
+
 
   const loadingFunc = function () {
     const arr = [...Array(8)].map(
@@ -23,11 +32,15 @@ function CardPage({ selectEvent, event, isLoading, likedEvents}) {
 
  
     const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
+    const userLogInCard = window.localStorage.getItem("isUserLogIned")
 
     return isLoading
       ? arr
-      : lessEvent.map((obj, index) => (
+          
+      : lessEvent?.map((obj, index) => (
+
             <Card
+              userLogInCard= {userLogInCard}
               isLiked = {userInfo?.likes?.map((item) => item.id ).includes(obj.id)}
               likedEvents={likedEvents}
               onClick={() => {
@@ -37,6 +50,7 @@ function CardPage({ selectEvent, event, isLoading, likedEvents}) {
               loading={isLoading}
               {...obj}
             />
+           
         ));
   };
   return  <div>
@@ -46,6 +60,9 @@ function CardPage({ selectEvent, event, isLoading, likedEvents}) {
            <div className="ShowMoreEvent">
               <button className="showMoreCard" onClick={onClickShowMor}>
               ... Show More
+            </button>
+            <button className="showMoreCard" onClick={onClickShowLes}>
+              ... Show Less
             </button>
            </div>
            </div>

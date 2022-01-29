@@ -156,8 +156,10 @@
     padding: 10px;
     margin-top: 10px;
 }
-.createEvent-price button{
-    padding: 16px 45px;
+.createEvent-price-div{
+    text-align: center;
+    width:100px;
+    padding: 16px 15px;
     background-color: white;
     margin-right: 20px;
     border:1px solid grey;
@@ -174,6 +176,7 @@
     background-color: white;
     margin-right: 20px;
     border:1px solid grey;
+    cursor: pointer;
     
 }
 .createEvent-btnSave{
@@ -182,5 +185,6 @@
     background-color: #D1410CFF;
     border:1px solid #D1410CFF;
     color: white;
+    cursor: pointer;
 }
 

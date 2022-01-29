@@ -1,12 +1,11 @@
 .order{
     display: flex;
-    flex-direction: row;
     margin-bottom: 60px;
-    padding-top: 0px;
     transition: box-shadow .3s;
     border-radius:10px;
     border: 1px solid white;
     background: #fff;
+    width: 600px;
 }
 
 .order:hover{
@@ -26,7 +25,6 @@
 
 .order-name{
     text-decoration: none;
-    font-size: 30px;
     font-weight: bolder;
     color: black;
     margin: 0;
@@ -37,19 +35,16 @@
     margin: 0;
     padding: 0;
     color: #6f7287;
-    font-weight: initial;
 }
 
 .order-location{
     margin: 0;
     padding: 0;
     color: #6f7287;
-    font-weight: initial;
 }
 
 .order-price{
     margin: 0;
     padding: 0;
-    font-weight: initial;
     color: #6f7287;
 }

@@ -170,6 +170,7 @@
 
 
 .active{
+    font-weight: 600;
     white-space: nowrap;
     font: inherit;
     margin: 0;
@@ -186,12 +187,12 @@
     padding-bottom: 12px;
     border-bottom: 2px solid  rgb(61, 100, 255);
     color: #3d64ff;
-
+    /* color: #39364f; */
 }
-.activeSpan{
+/* .activeSpan{
     font: inherit;
     font-weight: 600;
-}
+} */
 
 .neutral{
     white-space: nowrap;
@@ -212,7 +213,7 @@
     color: rgb(57, 54, 79);
 }
 
-.span2{
+/* .span2{
     font: inherit;
     text-transform: none;
     cursor: pointer;
@@ -220,8 +221,10 @@
     color: #39364f;
     font-weight: 600;
     white-space: nowrap;
+} */
+.li button{
+    font-weight: 600;
 }
-
 
 
 .li{
@@ -240,6 +243,7 @@
 .passive{
     white-space: nowrap;
     font: inherit;
+    font-weight: 600;
     margin: 0;
     overflow: visible;
     text-transform: none;

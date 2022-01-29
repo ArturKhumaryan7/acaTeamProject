@@ -1,7 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
-import CardPage from '../CardPage';
-import Card from '../Card';
+import Footer from "../Footer/footer";
 import styles from './LikedItems.css';
 
 function LikedEvents  ()  {
@@ -11,9 +9,11 @@ const likedCard = JSON.parse(window.localStorage.getItem("currentUser"))
   
 return (
     <>
+
          
-                       <h1 className='likesStyle'>Likes</h1>
-                       {likedCard.likes.map((obj) => 
+     <h1 className='likesStyle'>Likes</h1>
+
+        { likedCard?.likes?.map((obj) => 
            <div className='liked'>
            <img className='liked-img' src={obj.avatar}/>
            <div className='liked-text'>
@@ -23,9 +23,9 @@ return (
                <h3 className='liked-price'>{obj.price}</h3>
            </div>
           </div>
-        )
-        
+        )       
        }
+       <Footer/>
     </>
    
         

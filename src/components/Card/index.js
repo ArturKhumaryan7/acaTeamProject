@@ -11,15 +11,17 @@ function Card( {
   avatar,
   price,
   location,
-  endDate,
+  startDate,
   follow,
   likedEvents,
   isLiked,
   loading,
   onClick,
+  userLogInCard
 }) {
 const [isLikedState, setIsLikedState] = useState(isLiked)
-const obj = { id, name,  avatar, location, price, endDate, follow}
+
+const obj = { id, name,  avatar, location, price, startDate, follow}
 
 const handeClike = () => {
   setIsLikedState(!isLikedState)
@@ -64,15 +66,24 @@ const handeClike = () => {
              </p>
              <p className="info">
                   <i className="fas fa-calendar-alt"></i>
-                   {endDate}
+                   {startDate}
              </p>
          <p> <i className="fas fa-user-alt"></i>
          {follow} followers
          </p>
       </div>
       <button className="action">
-         <img className="heart" width={25} height={25} onClick={handeClike} src={isLikedState ? "/img/HeartOutline.svg":"/img/heart.svg"}/>
+      { userLogInCard ?
+       ( 
+       <img className="heart" width={25} height={25} onClick={handeClike} src={isLikedState ? "/img/HeartOutline.svg":"/img/heart.svg"}/>
+       ): (
+         <Link to='/logIn'>
+       <img className="heart" width={25} height={25} src="/img/heart.svg"/>
+        </Link>
+      )
+      }
       </button>
+      
   </div>     
      </>
     )   }

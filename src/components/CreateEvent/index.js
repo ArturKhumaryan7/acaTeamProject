@@ -1,6 +1,6 @@
 import "./index.css"
 import axios from "../../api/axios"
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {useForm} from "react-hook-form";
 import {FaDollarSign } from "react-icons/fa";
 import {GrTextAlignLeft} from "react-icons/gr"
@@ -9,13 +9,37 @@ import {ImCalendar} from "react-icons/im"
 import {TimePickerComponent,DatePickerComponent} from "@syncfusion/ej2-react-calendars";
 import TimezoneSelect,{allTimezones} from "react-timezone-select";
 import CurrencyInput from "react-currency-input-field";
-import {toast} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router-dom"
+import Modal from "react-modal";
+import FooterSecond from "../Footer/footer"
 
-toast.configure();
+
+  
+Modal.setAppElement("#root");
+
+const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      width: "50%",
+  
+      textAlign: "center"
+    }
+  };
+
+
 
 const CreateEvent = () => {
+    
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const navigate = useNavigate();
+
     const { t } = useTranslation();
 
     const {register,handleSubmit,reset, formState: { errors }} = useForm({defaultValues:{description:[]}});
@@ -27,10 +51,6 @@ const CreateEvent = () => {
     const [endTime,setEndTime] = useState(new Date('8/3/2017 10:00 AM'))
     const [selectedTimezone, setSelectedTimezone] = useState(Intl.DateTimeFormat().resolvedOptions().timeZone);
     const [price, setPrice] = useState(0);
-    
-    const notify = () => {
-        toast.success("Success!", {position: toast.POSITION.TOP_CENTER});
-    }
 
     const handleTimeStart = (e) => {
         let selectedTimeStart = new Date(e.value).toLocaleString('en-US', { hour: '2-digit', minute:'2-digit', hour12: true })
@@ -56,7 +76,7 @@ const CreateEvent = () => {
         data.description = [data.description]
         axios.post("/newEvent",
                     {...data,
-                        "price":"$" + new Intl.NumberFormat().format(price),
+                        "price":((new Intl.NumberFormat().format(price)) == 0)? "Free" : "$" + new Intl.NumberFormat().format(price),
                         "follow":"0",
                         startDate:dateStart.toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }),
                         endDate:dateEnd.toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }),
@@ -66,9 +86,9 @@ const CreateEvent = () => {
                     }
                 )
                 .then((res)=>{
-                    notify()
                     setPrice(0)
                     reset()
+                    setIsModalOpen(true)
                 })
                 .catch((err)=>{
                     console.log(err)
@@ -80,12 +100,56 @@ const CreateEvent = () => {
         setPrice(0)
         reset()   
     }
-    
- 
+    const handleOnlineFalse = (e) => {
+        e.preventDefault()
+        setIsOnline(false)
+    }
+    const handleOnlineTrue = (e) => {
+        e.preventDefault()
+        setIsOnline(true)
+    }
+    useEffect(() => {
+        if (isModalOpen) {
+          document.body.style.overflow = "hidden";
+        }else{
+          document.body.style.overflow = 'unset';
+        }
+    }, [isModalOpen]);
+
+    const handleModalBtnClick = () =>{
+        setIsModalOpen(false);
+        document.body.style.overflow = 'unset';
+        navigate("/")
+    }
     
   
     return (
         <div>
+            <Modal style={customStyles} isOpen={isModalOpen}>
+                <h1 style={{ color: "green", fontSize: "35px" }}>Success!</h1>
+                <p style={{ color: "grey", fontSize: "25px" }}>
+                Your event has been created and added to the other events.
+                </p>
+                <p style={{ color: "grey", fontSize: "25px" }}>
+                For viewing the event go 
+                </p>
+                <button
+                    onClick={handleModalBtnClick}
+                    style={{
+                        cursor:"pointer",
+                        margin:"20px",
+                        backgroundColor: "green",
+                        color: "white",
+                        fontSize: "18px",
+                        paddingTop:"13px",
+                        paddingBottom:"13px",
+                        paddingLeft: "30px",
+                        paddingRight: "30px"
+                    }}
+                    >
+                    Home
+                </button>
+            </Modal> 
             <form className="createEvent-form" onSubmit={handleSubmit(onSubmit)}>
                 <section className='createEvent-infoSection'>
                     <GrTextAlignLeft className='createEvent-GrTextAlignLeft'/>
@@ -93,8 +157,11 @@ const CreateEvent = () => {
                             <h1>{t("Basic Info")}</h1>
                             <p>{t("Basic Info p")}</p>
                             <label>{t("Event Title")}</label>
-                            <input {...register("title", { required: "This feild is required",message: t("form.validations.required") })} type="text" placeholder={t('Be clear and descriptive' )}/>
+                            <input {...register("title", { required: "This feild is required"})} type="text" placeholder={t('Be clear and descriptive' )}/>
                             <p className='createEvent-err'>{errors.title?.message}</p>
+                            <label>{t("Event Name")}</label>
+                            <input {...register("name", { required: "This feild is required"})} type="text" placeholder={t('Be clear and descriptive' )}/>
+                            <p className='createEvent-err'>{errors.name?.message}</p>
                             <label>{t("Organizer")}</label>
                             <input {...register("organizer", { required: "This feild is required" })} type="text" placeholder={t('Tell atendees who is organizing this event')} />
                             <p className='createEvent-err'>{errors.organizer?.message}</p>
@@ -117,7 +184,11 @@ const CreateEvent = () => {
                                 <option value="Science & Technology">{t("Science & Technology")}</option>
                                 <option value="Sports & Fitness">{t("Sports & Fitness")}</option>
                                 <option value="Travel & Outdoor">{t("Travel & Outdoor")}</option>
+                                <option value="Charity & Causes">{t("Charity & Causes")}</option>
                             </select>
+                            <p className='createEvent-textarea-p'>{t("Image URL")}</p>
+                            <input {...register("avatar", { required: "This feild is required" })} type="text" />
+                            <p className='createEvent-err'>{errors.avatar?.message}</p>
                             
                         </div>       
                 </section>
@@ -129,8 +200,8 @@ const CreateEvent = () => {
                         <div className='createEvent-location'>
                             <h1>{t("Location")}</h1>
                             <p>{t("Location p")}</p>
-                            <button onClick={() => setIsOnline(false)}>{t("Venue")}</button>
-                            <button onClick={() => setIsOnline(true)}>{t("Online Event")}</button>
+                            <button onClick={handleOnlineFalse}>{t("Venue")}</button>
+                            <button onClick={handleOnlineTrue}>{t("Online Event")}</button>
                             {isOnline  ? <p>{t("Online Event p")}</p>
                                         :(
                                             <div>
@@ -188,7 +259,7 @@ const CreateEvent = () => {
                     <div className='createEvent-price'>
                         <h1>{t("Price")}</h1>
                         <p>{t("Price p")}</p>
-                        <button>{t("Price")}</button>
+                        <div className='createEvent-price-div'>{t("Price")}</div>
                         
                         <div className='createEvent-priceInput-container'>
                             <label htmlFor='input-example'>{t("Please enter a number")}</label>
@@ -214,7 +285,9 @@ const CreateEvent = () => {
                 </div>
                
             </form>
+            <FooterSecond /> 
         </div>
+
     )
 }
 

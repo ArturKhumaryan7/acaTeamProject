@@ -38,11 +38,11 @@ import "./DeleteAccount.css"
                 <textarea className="explaneTextArea" placeholder="Write an explanation"></textarea>
                 <p style={{}}>Please enter "CLOSE" and your password to confirm that you wish to close your account</p>
                 <p style={{color:"gray"}}>If you selected the "Delete my account after closing it" option above, you are also confirming that you wish to delete your account</p>
-                <div style={{display:"flex", justifyContent:"space-between", width:"50%"}}>
+                <div style={{display:"flex", justifyContent:"space-between", width:"400px"}}>
                     <p>Type "CLOSE":</p>
                     <input className="deleteAccInps" id="deleteAccInpForClose" type="text"/>
                 </div>
-                <div style={{display:"flex", justifyContent:"space-between", width:"50%", marginTop:"20px"}}>
+                <div style={{display:"flex", justifyContent:"space-between", width:"400px", marginTop:"20px"}}>
                     <p>Enter your password:</p>
                     <input className="deleteAccInps" id="deleteAccPasswordInp" type="password"/>
                 </div>

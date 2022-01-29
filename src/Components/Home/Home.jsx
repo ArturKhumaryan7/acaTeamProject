@@ -3,6 +3,8 @@ import Header from "../Header/Header";
 import {Route, Routes} from "react-router-dom";
 import CardPage from "../CardPage";
 import { useState } from "react";
+import Footer from "../Footer/index"
+
 
 
 const Home = ({
@@ -15,15 +17,7 @@ const Home = ({
     return (
         <div>
             <Header/>
-            <Categories items={[
-                'For you',
-                'Online',
-                'Today',
-                'This weekend',
-                'Free',
-                'Music',
-                'Food & Drink',
-                'Charity & Causes']}/>
+            <Categories/>
             <CardPage 
             likedEvents={likedEvents}
             selectEvent={selectEvent}
@@ -32,6 +26,8 @@ const Home = ({
             isLoading = {isLoading}
             onAddToLiked={onAddToLiked}
             />
+            <Footer />
+
            
         </div>
     );
