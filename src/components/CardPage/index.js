@@ -12,24 +12,17 @@ import { getAdditionalUserInfo } from "firebase/auth";
 
 function CardPage({ selectEvent, event, isLoading, likedEvents}) {
   const [eventCount, setEventCount] = useState(8);
-  // const {setEvent,setFilterArr} = useContext(EventContext)
-
-  // useEffect(() => {
-  //   async function eventCardData() {
-  //     const cardInfo = await axios.get(
-  //       "https://61e2a20e3050a10017682205.mockapi.io/newEvent"
-  //     );
-  //     setFilterArr(cardInfo.data)
-  //     setEvent(cardInfo.data);
-  //   }
-  //   eventCardData();
-  // }, []);
 
   const lessEvent = event?.slice(0, eventCount);
 
   const onClickShowMor =  () => {
    setEventCount(eventCount + 4)
  };
+
+ const onClickShowLes =  () => {
+  setEventCount(eventCount - 4)
+};
+
 
 
   const loadingFunc = function () {
@@ -39,6 +32,7 @@ function CardPage({ selectEvent, event, isLoading, likedEvents}) {
 
  
     const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
+    const userLogInCard = window.localStorage.getItem("isUserLogIned")
 
     return isLoading
       ? arr
@@ -46,6 +40,7 @@ function CardPage({ selectEvent, event, isLoading, likedEvents}) {
       : lessEvent?.map((obj, index) => (
 
             <Card
+              userLogInCard= {userLogInCard}
               isLiked = {userInfo?.likes?.map((item) => item.id ).includes(obj.id)}
               likedEvents={likedEvents}
               onClick={() => {
@@ -65,6 +60,9 @@ function CardPage({ selectEvent, event, isLoading, likedEvents}) {
            <div className="ShowMoreEvent">
               <button className="showMoreCard" onClick={onClickShowMor}>
               ... Show More
+            </button>
+            <button className="showMoreCard" onClick={onClickShowLes}>
+              ... Show Less
             </button>
            </div>
            </div>

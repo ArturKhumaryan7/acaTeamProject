@@ -10,11 +10,7 @@ const Header = () => {
         <div className='head'>
             <section className='header'>
                 <div className='header1'>
-                    <div className='header2'>
-                        <picture className='header3'>
-                            <img className='img' src="https://eventbrite-s3.s3.amazonaws.com/marketing/NIYT_home_headers/7316_NIYT+home+header_4K_1920x544.jpg"/>
-                        </picture>
-                    </div>
+                   
                     <div className='header4'>
                         <div className='header5'>
                             <div className='header6'>

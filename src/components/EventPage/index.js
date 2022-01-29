@@ -2,12 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ShareIcons from "../ShareIcons"
+import { Link } from "react-router-dom";
 import styles from "./EventPage.css";
 import TicketPurchasePage from "./TicketPurchasePag/TicketPurchasePage";
 import Modal from "react-modal"
 import i18n from "../../i18n"
 import { useTranslation } from "react-i18next";
 import EventShareButton from "../EventShareButton";
+import Footer from "../Footer/footer";
 
 
 function getID() {
@@ -33,16 +35,18 @@ function EventPage({
   title,
   likedEvents
 }) {
- 
+
+
   const [eventPageInfo, setEventPageInfo] = useState({})
   const [follow, setFollow] = useState(0);
   const [isFollow, setIsFollow] = useState(false);
-  const [isLiked, setIsLiked] = useState();
+  const [isLiked, setIsLiked] = useState(false);
   const [listingChange, setListingChange] = useState(false);
   const [hideTicketPurchasePage, setHideTicketPurchasePage] = useState(true)
-  const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
   const [shareFriends, setShareFriends] = useState(false);
 
+  const userInfo = JSON.parse(window.localStorage.getItem("currentUser"))
+  const userLogInEventPage = window.localStorage.getItem("isUserLogIned")
 
   useEffect(() => {
     if (name === undefined) {
@@ -70,7 +74,10 @@ function EventPage({
             title,
         })
     }
+
+   console.log(eventPageInfo)
   }, [])
+  
 
   if(!hideTicketPurchasePage){
     document.body.style.overflowY="hidden"
@@ -89,9 +96,7 @@ function EventPage({
     likedEvents(eventPageInfo)
   }
 
-  const followCount = () => {
-
-    
+  const followCount = () => { 
     setIsFollow(!isFollow);
 
     (isFollow ? setFollow(follow - 1): setFollow(follow + 1));
@@ -101,16 +106,6 @@ function EventPage({
     } else {
       userInfo.followings--;
     }
-
-    fetch(`https://61e6cdffce3a2d001735944d.mockapi.io/users/${userInfo.id}`, {
-                    method:"put",
-                    headers: {
-                        "content-type":"application/json"
-                    },
-                    body:JSON.stringify(userInfo)
-                }).then(res => {
-                    window.localStorage.setItem("currentUser", JSON.stringify(userInfo))
-                })
   };
 
   const listingPanelChanging = () => {
@@ -129,9 +124,10 @@ function EventPage({
      }
  }
 
- 
+ let liked = userInfo?.likes?.map((item) => item.id ).includes(eventPageInfo.id)
 
   return (
+    <>
     <div className="EventPageHead">
     <Modal isOpen={!hideTicketPurchasePage} className="modal" style={{overlay:{backgroundColor:"grey", zIndex:"99999"}}}>
         <TicketPurchasePage hideTicketPurchasePage = {hideTicketPurchasePage} 
@@ -231,13 +227,26 @@ function EventPage({
                     </li>
                     <li className="eventLiked">
                       <button className="shareAction">
-                        <img
+                        {userLogInEventPage? (
+                          <img
                           className="heart"
                           height={30}
                           width={30}
                           onClick={handeClike}
-                          src={isLiked ? "/img/HeartOutline.svg":"/img/heart.svg"}
+                          src={ 
+                           ((isLiked === true && liked === true)? false :  (isLiked || liked)) ? "/img/HeartOutline.svg":"/img/heart.svg"}
                         />
+                        ) : (
+                        <Link to="/logIn">
+                        <img
+                        className="heart"
+                        height={30}
+                        width={30}
+                        src="/img/heart.svg"
+                         />
+                         </Link>)
+                         }
+                        
                       </button>
                     </li>
                   </ul>
@@ -248,7 +257,12 @@ function EventPage({
                   </div>
                 </div>
                 <div className="registerButton">
-                  <button className="registerAction" onClick={() => setHideTicketPurchasePage(false)}>Order</button>
+                  {userLogInEventPage ? 
+                  (<button className="registerAction" onClick={() => setHideTicketPurchasePage(false)}>Order</button>):
+                  <Link to="/logIn">
+                  <button className="registerAction">Order</button>)
+                  </Link>
+                  }
                 </div>
               </div>
             </div>
@@ -319,6 +333,8 @@ function EventPage({
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }
 

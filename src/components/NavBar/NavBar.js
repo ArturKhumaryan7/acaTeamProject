@@ -37,7 +37,6 @@ import { EventContext } from "../../Contexts/EventContext";
                             <img className="searchIcon" src="https://cdn0.iconfinder.com/data/icons/very-basic-2-android-l-lollipop-icon-pack/24/search-512.png"/>
                         </div>
                         <div className='createEvtAndSignIn'>
-                                {userLogIn && <Link className='signInBtn' to='/logIn' onClick={() => hideNavBar(true)}><p className='NavBarBtnContent'>Sign In</p></Link>}
                             {   (userLogIn || userInfo.status === "admin") && <Link className='createEvtBtn' to={userLogIn ? "/logIn": userInfo.status === "admin" ? "/createEvent": ""} onClick={() => hideNavBar(window.localStorage.getItem("isUserLogIned")?false:true)}><p className='NavBarBtnContent'>{t("Create New Event")}</p></Link>}
                                 {userLogIn && <Link className='signInBtn' to='/logIn' onClick={() => hideNavBar(true)}><p className='NavBarBtnContent'>{t("Sign In")}</p></Link>}
                             {   !userLogIn &&  
@@ -52,7 +51,7 @@ import { EventContext } from "../../Contexts/EventContext";
                                             <p className='tickets'>{t("Tickets")}</p>
                                         </Link>}
                             {   !userLogIn && 
-                                <div style={{display:"flex", flexDirection:"column", justifyContent:"end" ,marginBottom:"-219px"}} hidden= {true}>
+                                <div style={{display:"flex", zIndex: "50", flexDirection:"column", justifyContent:"end" ,marginBottom:"-219px"}} hidden= {true}>
                                     <div className='userAccDropDown' onMouseOver={dropDownShow} onMouseOut={dropDownHide}>
                                         <img className='accIcon' src={userInfo.profilePicture === ""?"https://cdn4.iconfinder.com/data/icons/e-commerce-181/512/477_profile__avatar__man_-512.png":userInfo.profilePicture}/>
                                         <p className='NavBarBtnContent'>{userInfo.email}</p>
