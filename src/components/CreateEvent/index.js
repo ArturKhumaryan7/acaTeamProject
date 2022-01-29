@@ -51,6 +51,7 @@ const CreateEvent = () => {
     const [endTime,setEndTime] = useState(new Date('8/3/2017 10:00 AM'))
     const [selectedTimezone, setSelectedTimezone] = useState(Intl.DateTimeFormat().resolvedOptions().timeZone);
     const [price, setPrice] = useState(0);
+    const [location,setLocation] = useState("")
 
     const handleTimeStart = (e) => {
         let selectedTimeStart = new Date(e.value).toLocaleString('en-US', { hour: '2-digit', minute:'2-digit', hour12: true })
@@ -76,7 +77,8 @@ const CreateEvent = () => {
         data.description = [data.description]
         axios.post("/newEvent",
                     {...data,
-                        "price":"0"? "Free" : "$" + new Intl.NumberFormat().format(price),
+                        "location": location === ""?"Online event":location,
+                        "price": new Intl.NumberFormat().format(price)==="0"? "Free" : "$" + new Intl.NumberFormat().format(price),
                         "follow":"0",
                         startDate:dateStart.toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }),
                         endDate:dateEnd.toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }),
@@ -87,6 +89,7 @@ const CreateEvent = () => {
                 )
                 .then((res)=>{
                     setPrice(0)
+                    setIsOnline()
                     reset()
                     setIsModalOpen(true)
                 })
@@ -98,6 +101,7 @@ const CreateEvent = () => {
     
     const handleDiscard = () =>{
         setPrice(0)
+        setIsOnline()
         reset()   
     }
     const handleOnlineFalse = (e) => {
@@ -121,7 +125,9 @@ const CreateEvent = () => {
         document.body.style.overflow = 'unset';
         navigate("/")
     }
-    
+    const handleLocation = (e) =>{
+        setLocation(e.target.value)
+    }
   
     return (
         <div>
@@ -206,8 +212,7 @@ const CreateEvent = () => {
                                         :(
                                             <div>
                                                 <label>{t("Venue location")}</label>
-                                                <input {...register("location", { required: "This feild is required" })}  type="text" placeholder={t("Write a venue or address")}/>
-                                                <p className='createEvent-err'>{errors.location?.message}</p>  
+                                                <input value={location} onChange={handleLocation}  type="text" placeholder={t("Write a venue or address")}/>
                                             </div>
                                         )
                             }
